@@ -7,31 +7,43 @@ const CATEGORIES = [
     { id: 'sport', name: 'Спорт і відпочинок', color: '#DEE9F5' }
 ];
 
+// ===== РЕАЛЬНІ ФОТО ТОВАРІВ (з безкоштовних джерел) =====
 const PRODUCTS = [
-    { id: 1, cat: 'electronics', name: 'Samsung Galaxy S24 Ultra 512GB', price: 52999, old: 56999, img: 'https://picsum.photos/seed/samsung/400/400' },
-    { id: 2, cat: 'electronics', name: 'iPhone 15 Pro Max 256GB', price: 49999, old: 52999, img: 'https://picsum.photos/seed/iphone/400/400' },
-    { id: 3, cat: 'electronics', name: 'MacBook Air 15" M3', price: 45999, old: null, img: 'https://picsum.photos/seed/macbook/400/400' },
-    { id: 4, cat: 'electronics', name: 'Samsung Galaxy Buds 3 Pro', price: 7999, old: 9999, img: 'https://picsum.photos/seed/buds/400/400' },
-    { id: 5, cat: 'appliances', name: 'Робот-пилосос Xiaomi S10', price: 12999, old: 15999, img: 'https://picsum.photos/seed/vacuum/400/400' },
-    { id: 6, cat: 'appliances', name: 'Холодильник LG InstaView', price: 32999, old: null, img: 'https://picsum.photos/seed/fridge/400/400' },
-    { id: 7, cat: 'appliances', name: 'Мультиварка Philips HD', price: 4999, old: null, img: 'https://picsum.photos/seed/cooker/400/400' },
-    { id: 8, cat: 'appliances', name: 'Праска Tefal Ultimate', price: 2999, old: 3999, img: 'https://picsum.photos/seed/iron/400/400' },
-    { id: 9, cat: 'fashion', name: 'Куртка North Face Nuptse', price: 12999, old: 15999, img: 'https://picsum.photos/seed/jacket/400/400' },
-    { id: 10, cat: 'fashion', name: 'Кросівки Nike Air Max 90', price: 5999, old: null, img: 'https://picsum.photos/seed/shoes/400/400' },
-    { id: 11, cat: 'fashion', name: 'Сумка Michael Kors', price: 8999, old: 11999, img: 'https://picsum.photos/seed/bag/400/400' },
-    { id: 12, cat: 'fashion', name: 'Пальто Zara Premium', price: 4999, old: null, img: 'https://picsum.photos/seed/coat/400/400' },
-    { id: 13, cat: 'home', name: 'Диван IKEA Vimle 3-місний', price: 15999, old: 18999, img: 'https://picsum.photos/seed/sofa/400/400' },
-    { id: 14, cat: 'home', name: 'Набір посуду Tefal 12 пр.', price: 3499, old: null, img: 'https://picsum.photos/seed/dishes/400/400' },
-    { id: 15, cat: 'home', name: 'Світильник IKEA FADO', price: 799, old: null, img: 'https://picsum.photos/seed/lamp/400/400' },
-    { id: 16, cat: 'home', name: 'Штучна ялина Balsam Hill', price: 2499, old: 3499, img: 'https://picsum.photos/seed/tree/400/400' },
-    { id: 17, cat: 'kids', name: 'Конструктор BrickCity (500 дет.)', price: 999, old: null, img: 'https://picsum.photos/seed/lego/400/400' },
-    { id: 18, cat: 'kids', name: 'Дитячий велосипед KidRide 16"', price: 3299, old: 3799, img: 'https://picsum.photos/seed/bike/400/400' },
-    { id: 19, cat: 'kids', name: 'М\'яка іграшка Ведмедик Тедді', price: 449, old: null, img: 'https://picsum.photos/seed/bear/400/400' },
-    { id: 20, cat: 'kids', name: 'Пазл «Мандрівка світом» 1000 дет.', price: 349, old: null, img: 'https://picsum.photos/seed/puzzle/400/400' },
-    { id: 21, cat: 'sport', name: 'Гантелі набірні PowerSet 20 кг', price: 1799, old: null, img: 'https://picsum.photos/seed/dumbbell/400/400' },
-    { id: 22, cat: 'sport', name: 'Килимок для йоги FlexMat', price: 599, old: null, img: 'https://picsum.photos/seed/yoga/400/400' },
-    { id: 23, cat: 'sport', name: 'Футбольний м\'яч ProKick', price: 749, old: 899, img: 'https://picsum.photos/seed/ball/400/400' },
-    { id: 24, cat: 'sport', name: 'Спортивний рюкзак TrainBag', price: 899, old: null, img: 'https://picsum.photos/seed/backpack/400/400' }
+    // ЕЛЕКТРОНІКА - реальні фото смартфонів, ноутбуків
+    { id: 1, cat: 'electronics', name: 'Samsung Galaxy S24 Ultra 512GB', price: 52999, old: 56999, img: 'https://images.pexels.com/photos/4041243/pexels-photo-4041243.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 2, cat: 'electronics', name: 'iPhone 15 Pro Max 256GB', price: 49999, old: 52999, img: 'https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 3, cat: 'electronics', name: 'MacBook Air 15" M3', price: 45999, old: null, img: 'https://images.pexels.com/photos/18105/pexels-photo.jpg?w=400&h=400&fit=crop&crop=center' },
+    { id: 4, cat: 'electronics', name: 'Samsung Galaxy Buds 3 Pro', price: 7999, old: 9999, img: 'https://images.pexels.com/photos/3394651/pexels-photo-3394651.jpeg?w=400&h=400&fit=crop&crop=center' },
+    
+    // ПОБУТОВА ТЕХНІКА
+    { id: 5, cat: 'appliances', name: 'Робот-пилосос Xiaomi S10', price: 12999, old: 15999, img: 'https://images.pexels.com/photos/3735695/pexels-photo-3735695.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 6, cat: 'appliances', name: 'Холодильник LG InstaView', price: 32999, old: null, img: 'https://images.pexels.com/photos/2766514/pexels-photo-2766514.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 7, cat: 'appliances', name: 'Мультиварка Philips HD', price: 4999, old: null, img: 'https://images.pexels.com/photos/4066429/pexels-photo-4066429.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 8, cat: 'appliances', name: 'Праска Tefal Ultimate', price: 2999, old: 3999, img: 'https://images.pexels.com/photos/1309890/pexels-photo-1309890.jpeg?w=400&h=400&fit=crop&crop=center' },
+    
+    // МОДА
+    { id: 9, cat: 'fashion', name: 'Куртка North Face Nuptse', price: 12999, old: 15999, img: 'https://images.pexels.com/photos/2260742/pexels-photo-2260742.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 10, cat: 'fashion', name: 'Кросівки Nike Air Max 90', price: 5999, old: null, img: 'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 11, cat: 'fashion', name: 'Сумка Michael Kors', price: 8999, old: 11999, img: 'https://images.pexels.com/photos/2289253/pexels-photo-2289253.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 12, cat: 'fashion', name: 'Пальто Zara Premium', price: 4999, old: null, img: 'https://images.pexels.com/photos/2539419/pexels-photo-2539419.jpeg?w=400&h=400&fit=crop&crop=center' },
+    
+    // ДІМ ТА САД
+    { id: 13, cat: 'home', name: 'Диван IKEA Vimle 3-місний', price: 15999, old: 18999, img: 'https://images.pexels.com/photos/276583/pexels-photo-276583.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 14, cat: 'home', name: 'Набір посуду Tefal 12 пр.', price: 3499, old: null, img: 'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 15, cat: 'home', name: 'Світильник IKEA FADO', price: 799, old: null, img: 'https://images.pexels.com/photos/1035000/pexels-photo-1035000.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 16, cat: 'home', name: 'Штучна ялина Balsam Hill', price: 2499, old: 3499, img: 'https://images.pexels.com/photos/3029561/pexels-photo-3029561.jpeg?w=400&h=400&fit=crop&crop=center' },
+    
+    // ДИТЯЧІ ТОВАРИ
+    { id: 17, cat: 'kids', name: 'Конструктор BrickCity (500 дет.)', price: 999, old: null, img: 'https://images.pexels.com/photos/163064/play-lego-constructor-build-163064.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 18, cat: 'kids', name: 'Дитячий велосипед KidRide 16"', price: 3299, old: 3799, img: 'https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 19, cat: 'kids', name: 'М\'яка іграшка Ведмедик Тедді', price: 449, old: null, img: 'https://images.pexels.com/photos/33587/teddy-bear-bear-teddy-teddy-bear-toy.jpg?w=400&h=400&fit=crop&crop=center' },
+    { id: 20, cat: 'kids', name: 'Пазл «Мандрівка світом» 1000 дет.', price: 349, old: null, img: 'https://images.pexels.com/photos/1739665/pexels-photo-1739665.jpeg?w=400&h=400&fit=crop&crop=center' },
+    
+    // СПОРТ
+    { id: 21, cat: 'sport', name: 'Гантелі набірні PowerSet 20 кг', price: 1799, old: null, img: 'https://images.pexels.com/photos/260447/pexels-photo-260447.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 22, cat: 'sport', name: 'Килимок для йоги FlexMat', price: 599, old: null, img: 'https://images.pexels.com/photos/4722451/pexels-photo-4722451.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 23, cat: 'sport', name: 'Футбольний м\'яч ProKick', price: 749, old: 899, img: 'https://images.pexels.com/photos/47730/football-ball-soccer- sports-47730.jpeg?w=400&h=400&fit=crop&crop=center' },
+    { id: 24, cat: 'sport', name: 'Спортивний рюкзак TrainBag', price: 899, old: null, img: 'https://images.pexels.com/photos/373561/pexels-photo-373561.jpeg?w=400&h=400&fit=crop&crop=center' }
 ];
 
 const catMap = Object.fromEntries(CATEGORIES.map(c => [c.id, c]));
@@ -173,7 +185,7 @@ function renderGrid() {
         <div class="card">
             <div class="thumb" style="background:${c ? c.color : '#eee'}">
                 ${p.old !== null ? `<span class="sale-flag">Знижка</span>` : ''}
-                <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'">
+                <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:30px;color:#999;\\'>Фото немає</span>'">
             </div>
             <div class="cat-label">${c ? c.name : ''}</div>
             <div class="name">${p.name}</div>
