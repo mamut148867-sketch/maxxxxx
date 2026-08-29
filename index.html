@@ -19,7 +19,7 @@
             </form>
             <div class="header-actions">
                 <button class="cart-btn" id="openCart">
-                    🧺 Кошик
+                    🛒 Кошик
                     <span class="cart-count" id="cartCount">0</span>
                 </button>
             </div>
@@ -43,8 +43,8 @@
             <div class="filter-group" id="catChecks"></div>
             <h3>Ціна, ₴</h3>
             <div class="filter-group price-range">
-                <input type="range" id="priceMax" min="0" max="35000" step="100" value="35000">
-                <div class="val">до <span id="priceMaxVal">35000</span> ₴</div>
+                <input type="range" id="priceMax" min="0" max="60000" step="100" value="60000">
+                <div class="val">до <span id="priceMaxVal">60000</span> ₴</div>
             </div>
             <h3>Наявність</h3>
             <div class="filter-group">
@@ -70,6 +70,7 @@
 
     <footer class="site">© 2026 ЯРМАРОК — навчальний демо-маркетплейс</footer>
 
+    <!-- ===== CART DRAWER ===== -->
     <div class="overlay" id="overlay"></div>
     <div class="drawer" id="drawer">
         <div class="drawer-head">
@@ -79,10 +80,81 @@
         <div class="drawer-body" id="cartBody"></div>
         <div class="drawer-foot">
             <div class="total-row">
-                <span class="label">Разом</span>
-                <span class="sum" id="cartTotal">0 ₴</span>
+                <span class="label">Товари</span>
+                <span class="sum" id="cartSubtotal">0 ₴</span>
             </div>
             <button class="checkout-btn" id="checkoutBtn">Оформити замовлення</button>
+        </div>
+    </div>
+
+    <!-- ===== DELIVERY MODAL ===== -->
+    <div class="delivery-overlay" id="deliveryOverlay">
+        <div class="delivery-modal">
+            <div class="delivery-header">
+                <h3>🚚 Доставка замовлення</h3>
+                <button class="delivery-close" id="deliveryClose">×</button>
+            </div>
+            <div class="delivery-body">
+                <form id="deliveryForm">
+                    <div class="delivery-field">
+                        <label for="citySelect">Місто доставки</label>
+                        <select id="citySelect" required>
+                            <option value="">Оберіть місто</option>
+                            <option value="kyiv">Київ</option>
+                            <option value="lviv">Львів</option>
+                            <option value="odesa">Одеса</option>
+                            <option value="dnipro">Дніпро</option>
+                            <option value="kharkiv">Харків</option>
+                            <option value="zaporizhzhia">Запоріжжя</option>
+                            <option value="khmelnytskyi">Хмельницький</option>
+                            <option value="vinnytsia">Вінниця</option>
+                            <option value="cherkasy">Черкаси</option>
+                            <option value="zhytomyr">Житомир</option>
+                        </select>
+                    </div>
+
+                    <div class="delivery-field">
+                        <label for="streetAddress">Вулиця, будинок, квартира</label>
+                        <input type="text" id="streetAddress" placeholder="вул. Хрещатик, 1, кв. 10" required>
+                    </div>
+
+                    <div class="delivery-field">
+                        <label for="postalCode">Поштовий індекс</label>
+                        <input type="text" id="postalCode" placeholder="01001" required pattern="[0-9]{5}" maxlength="5">
+                    </div>
+
+                    <div class="delivery-options">
+                        <label class="delivery-option">
+                            <input type="radio" name="deliveryType" value="courier" checked>
+                            Кур'єр (безкоштовно)
+                        </label>
+                        <label class="delivery-option">
+                            <input type="radio" name="deliveryType" value="nova-poshta">
+                            Нова Пошта (за тарифами)
+                        </label>
+                        <label class="delivery-option">
+                            <input type="radio" name="deliveryType" value="self-pickup">
+                            Самовивіз (безкоштовно)
+                        </label>
+                    </div>
+
+                    <div class="delivery-field">
+                        <label for="orderComment">Коментар до замовлення</label>
+                        <textarea id="orderComment" placeholder="Ваші побажання до замовлення"></textarea>
+                    </div>
+
+                    <div class="delivery-order-summary">
+                        <h4>📦 Ваше замовлення</h4>
+                        <div id="deliveryItems"></div>
+                        <div class="delivery-total">
+                            <span>Разом:</span>
+                            <span id="deliveryTotalPrice">0 ₴</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="delivery-submit">✅ Підтвердити замовлення</button>
+                </form>
+            </div>
         </div>
     </div>
 

@@ -1,6 +1,6 @@
 /* ================= DATA ================= */
 const CATEGORIES = [
-    { id: 'electronics', name: 'Електроніка', ic: '📱', color: '#DCEDEA' },
+    { id: 'electronics', name: 'Електроніка', ic: '💻', color: '#DCEDEA' },
     { id: 'appliances', name: 'Побутова техніка', ic: '🧺', color: '#F3E7D6' },
     { id: 'fashion', name: 'Мода', ic: '👕', color: '#F6DED6' },
     { id: 'home', name: 'Дім і сад', ic: '🪴', color: '#E4EFDA' },
@@ -9,30 +9,161 @@ const CATEGORIES = [
 ];
 
 const PRODUCTS = [
-    { id: 1, cat: 'electronics', ic: '📱', name: 'Смартфон Nova X12 128GB', price: 14999, old: 17999 },
-    { id: 2, cat: 'electronics', ic: '🎧', name: 'Бездротові навушники SoundPods Air', price: 1899, old: 2399 },
-    { id: 3, cat: 'electronics', ic: '💻', name: 'Ноутбук WorkBook 15 Pro', price: 32999, old: null },
-    { id: 4, cat: 'electronics', ic: '⌚', name: 'Розумний годинник PulseFit 3', price: 3499, old: 3999 },
-    { id: 5, cat: 'appliances', ic: '🍲', name: 'Мультиварка ChefMate 6L', price: 2799, old: null },
-    { id: 6, cat: 'appliances', ic: '🤖', name: 'Робот-пилосос CleanWave', price: 8999, old: 10999 },
-    { id: 7, cat: 'appliances', ic: '🧊', name: 'Холодильник FreshBox 300', price: 21999, old: null },
-    { id: 8, cat: 'appliances', ic: '👕', name: 'Праска SteamGlide Pro', price: 1299, old: null },
-    { id: 9, cat: 'fashion', ic: '🧥', name: 'Куртка-вітровка Urban Line', price: 1599, old: 1999 },
-    { id: 10, cat: 'fashion', ic: '👟', name: 'Кросівки StreetRun 2.0', price: 2299, old: null },
-    { id: 11, cat: 'fashion', ic: '👗', name: 'Сукня Linen Breeze', price: 1099, old: null },
-    { id: 12, cat: 'fashion', ic: '🎒', name: 'Рюкзак CityPack 20L', price: 899, old: null },
-    { id: 13, cat: 'home', ic: '🍳', name: 'Набір каструль CookLine (5 пр.)', price: 2499, old: 2999 },
-    { id: 14, cat: 'home', ic: '🪑', name: 'Крісло-гойдалка Relax Wood', price: 4499, old: null },
-    { id: 15, cat: 'home', ic: '💡', name: 'Настільний світильник LumiDesk', price: 799, old: null },
-    { id: 16, cat: 'home', ic: '🌿', name: 'Набір садових інструментів GreenHand', price: 1199, old: null },
-    { id: 17, cat: 'kids', ic: '🧱', name: 'Конструктор BrickCity (500 дет.)', price: 999, old: null },
-    { id: 18, cat: 'kids', ic: '🚲', name: 'Дитячий велосипед KidRide 16"', price: 3299, old: 3799 },
-    { id: 19, cat: 'kids', ic: '🧸', name: 'М\'яка іграшка Ведмедик Тедді', price: 449, old: null },
-    { id: 20, cat: 'kids', ic: '🧩', name: 'Пазл «Мандрівка світом» 1000 дет.', price: 349, old: null },
-    { id: 21, cat: 'sport', ic: '🏋️', name: 'Гантелі набірні PowerSet 20 кг', price: 1799, old: null },
-    { id: 22, cat: 'sport', ic: '🧘', name: 'Килимок для йоги FlexMat', price: 599, old: null },
-    { id: 23, cat: 'sport', ic: '⚽', name: 'Футбольний м\'яч ProKick', price: 749, old: 899 },
-    { id: 24, cat: 'sport', ic: '🎒', name: 'Спортивний рюкзак TrainBag', price: 899, old: null }
+    // ===== ЕЛЕКТРОНІКА =====
+    { 
+        id: 1, cat: 'electronics', 
+        name: 'Samsung Galaxy S24 Ultra 512GB', 
+        price: 52999, old: 56999,
+        img: 'https://images.samsung.com/s24ultra.jpg'
+    },
+    { 
+        id: 2, cat: 'electronics', 
+        name: 'iPhone 15 Pro Max 256GB', 
+        price: 49999, old: 52999,
+        img: 'https://store.apple.com/iphone15.jpg'
+    },
+    { 
+        id: 3, cat: 'electronics', 
+        name: 'MacBook Air 15" M3', 
+        price: 45999, old: null,
+        img: 'https://store.apple.com/macbookair.jpg'
+    },
+    { 
+        id: 4, cat: 'electronics', 
+        name: 'Samsung Galaxy Buds 3 Pro', 
+        price: 7999, old: 9999,
+        img: 'https://images.samsung.com/buds3.jpg'
+    },
+    
+    // ===== ПОБУТОВА ТЕХНІКА =====
+    { 
+        id: 5, cat: 'appliances', 
+        name: 'Робот-пилосос Xiaomi S10', 
+        price: 12999, old: 15999,
+        img: 'https://xiaomi.com/s10.jpg'
+    },
+    { 
+        id: 6, cat: 'appliances', 
+        name: 'Холодильник LG InstaView', 
+        price: 32999, old: null,
+        img: 'https://lg.com/instaview.jpg'
+    },
+    { 
+        id: 7, cat: 'appliances', 
+        name: 'Мультиварка Philips HD', 
+        price: 4999, old: null,
+        img: 'https://philips.com/multicooker.jpg'
+    },
+    { 
+        id: 8, cat: 'appliances', 
+        name: 'Праска Tefal Ultimate', 
+        price: 2999, old: 3999,
+        img: 'https://tefal.com/ultimate.jpg'
+    },
+    
+    // ===== МОДА =====
+    { 
+        id: 9, cat: 'fashion', 
+        name: 'Куртка North Face Nuptse', 
+        price: 12999, old: 15999,
+        img: 'https://thenorthface.com/nuptse.jpg'
+    },
+    { 
+        id: 10, cat: 'fashion', 
+        name: 'Кросівки Nike Air Max 90', 
+        price: 5999, old: null,
+        img: 'https://nike.com/airmax90.jpg'
+    },
+    { 
+        id: 11, cat: 'fashion', 
+        name: 'Сумка Michael Kors', 
+        price: 8999, old: 11999,
+        img: 'https://michaelkors.com/bag.jpg'
+    },
+    { 
+        id: 12, cat: 'fashion', 
+        name: 'Пальто Zara Premium', 
+        price: 4999, old: null,
+        img: 'https://zara.com/coat.jpg'
+    },
+    
+    // ===== ДІМ ТА САД =====
+    { 
+        id: 13, cat: 'home', 
+        name: 'Диван IKEA Vimle 3-місний', 
+        price: 15999, old: 18999,
+        img: 'https://ikea.com/vimle.jpg'
+    },
+    { 
+        id: 14, cat: 'home', 
+        name: 'Набір посуду Tefal 12 пр.', 
+        price: 3499, old: null,
+        img: 'https://tefal.com/cookware.jpg'
+    },
+    { 
+        id: 15, cat: 'home', 
+        name: 'Світильник IKEA FADO', 
+        price: 799, old: null,
+        img: 'https://ikea.com/fado.jpg'
+    },
+    { 
+        id: 16, cat: 'home', 
+        name: 'Штучна ялина Balsam Hill', 
+        price: 2499, old: 3499,
+        img: 'https://balsamhill.com/tree.jpg'
+    },
+    
+    // ===== ДИТЯЧІ ТОВАРИ =====
+    { 
+        id: 17, cat: 'kids', 
+        name: 'LEGO City Fire Station', 
+        price: 1499, old: 1999,
+        img: 'https://lego.com/city.jpg'
+    },
+    { 
+        id: 18, cat: 'kids', 
+        name: 'Велосипед Trek Precaliber 20"', 
+        price: 8999, old: null,
+        img: 'https://trekbikes.com/precaliber.jpg'
+    },
+    { 
+        id: 19, cat: 'kids', 
+        name: 'Лялька Barbie Dreamhouse', 
+        price: 3999, old: 4999,
+        img: 'https://barbie.com/dreamhouse.jpg'
+    },
+    { 
+        id: 20, cat: 'kids', 
+        name: 'Розвиваючий килимок Tiny Love', 
+        price: 1899, old: null,
+        img: 'https://tinylove.com/mat.jpg'
+    },
+    
+    // ===== СПОРТ =====
+    { 
+        id: 21, cat: 'sport', 
+        name: 'Гантелі 20кг Ativafit', 
+        price: 2999, old: null,
+        img: 'https://ativafit.com/dumbbells.jpg'
+    },
+    { 
+        id: 22, cat: 'sport', 
+        name: 'Бігова доріжка Sportplus', 
+        price: 15999, old: 19999,
+        img: 'https://sportplus.com/treadmill.jpg'
+    },
+    { 
+        id: 23, cat: 'sport', 
+        name: 'М\'яч Adidas UCL 2026', 
+        price: 1599, old: 1999,
+        img: 'https://adidas.com/ucl.jpg'
+    },
+    { 
+        id: 24, cat: 'sport', 
+        name: 'Рюкзак Oakley Kitchen', 
+        price: 2499, old: null,
+        img: 'https://oakley.com/backpack.jpg'
+    }
 ];
 
 const catMap = Object.fromEntries(CATEGORIES.map(c => [c.id, c]));
@@ -42,7 +173,7 @@ let state = {
     activeCat: 'all',
     checkedCats: new Set(),
     search: '',
-    priceMax: 35000,
+    priceMax: 60000,
     onlySale: false,
     sort: 'default',
     cart: {} // id -> qty
@@ -103,7 +234,7 @@ function renderBoard() {
             return `
             <div class="deal-card">
                 <span class="badge">-${off}%</span>
-                <span class="ic">${d.ic}</span>
+                <span class="ic">${d.ic || '📦'}</span>
                 <span class="name">${d.name}</span>
                 <div class="prices">
                     <span class="now">${fmt(d.price)} ₴</span>
@@ -166,7 +297,7 @@ function renderGrid() {
         <div class="card">
             <div class="thumb" style="background:${c.color}">
                 ${p.old ? `<span class="sale-flag">Знижка</span>` : ''}
-                ${p.ic}
+                ${p.img ? `<img src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.parentElement.innerHTML+='<span style=\\'font-size:40px;\\'>📦</span>'">` : '📦'}
             </div>
             <div class="cat-label">${c.name}</div>
             <div class="name">${p.name}</div>
@@ -235,7 +366,7 @@ function renderCartBody() {
 
     if (entries.length === 0) {
         body.innerHTML = `<div class="cart-empty"><span class="ic">🧺</span>Кошик поки порожній.<br>Додайте щось із ярмарку!</div>`;
-        document.getElementById('cartTotal').textContent = '0 ₴';
+        document.getElementById('cartSubtotal').textContent = '0 ₴';
         return;
     }
 
@@ -244,7 +375,7 @@ function renderCartBody() {
         const c = catMap[p.cat];
         return `
         <div class="cart-item">
-            <div class="thumb-sm" style="background:${c.color}">${p.ic}</div>
+            <div class="thumb-sm" style="background:${c.color}">${p.ic || '📦'}</div>
             <div class="info">
                 <div class="name">${p.name}</div>
                 <div class="qty-row">
@@ -258,7 +389,7 @@ function renderCartBody() {
         </div>`;
     }).join('');
 
-    document.getElementById('cartTotal').textContent = fmt(cartTotal()) + ' ₴';
+    document.getElementById('cartSubtotal').textContent = fmt(cartTotal()) + ' ₴';
 
     body.querySelectorAll('[data-d]').forEach(btn => {
         btn.addEventListener('click', () => changeQty(Number(btn.dataset.id), Number(btn.dataset.d)));
@@ -311,12 +442,12 @@ document.getElementById('resetFilters').addEventListener('click', () => {
     state.activeCat = 'all';
     state.checkedCats.clear();
     state.search = '';
-    state.priceMax = 35000;
+    state.priceMax = 60000;
     state.onlySale = false;
     state.sort = 'default';
     document.getElementById('searchInput').value = '';
-    document.getElementById('priceMax').value = 35000;
-    document.getElementById('priceMaxVal').textContent = '35000';
+    document.getElementById('priceMax').value = 60000;
+    document.getElementById('priceMaxVal').textContent = '60000';
     document.getElementById('onlySale').checked = false;
     document.getElementById('sort').value = 'default';
     renderCatTabs();
@@ -344,13 +475,117 @@ document.getElementById('openCart').addEventListener('click', openCart);
 document.getElementById('closeCart').addEventListener('click', closeCart);
 overlay.addEventListener('click', closeCart);
 
+/* ================= DELIVERY MODAL ================= */
+const deliveryOverlay = document.getElementById('deliveryOverlay');
+const deliveryClose = document.getElementById('deliveryClose');
+const deliveryForm = document.getElementById('deliveryForm');
+
+// Відкрити доставку після оформлення замовлення
 document.getElementById('checkoutBtn').addEventListener('click', () => {
-    showToast('Замовлення оформлено! Дякуємо за покупку 🎉');
+    if (Object.keys(state.cart).length === 0) {
+        showToast('Кошик порожній!');
+        return;
+    }
+    // Заповнити список товарів у модалці
+    const itemsContainer = document.getElementById('deliveryItems');
+    const entries = Object.entries(state.cart);
+    itemsContainer.innerHTML = entries.map(([id, qty]) => {
+        const p = PRODUCTS.find(p => p.id === Number(id));
+        return `<div class="item-row">
+            <span>${p.name} × ${qty}</span>
+            <span>${fmt(p.price * qty)} ₴</span>
+        </div>`;
+    }).join('');
+    document.getElementById('deliveryTotalPrice').textContent = fmt(cartTotal()) + ' ₴';
+    
+    deliveryOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+});
+
+// Закрити доставку
+function closeDelivery() {
+    deliveryOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+deliveryClose.addEventListener('click', closeDelivery);
+deliveryOverlay.addEventListener('click', (e) => {
+    if (e.target === deliveryOverlay) closeDelivery();
+});
+
+// Відправка форми доставки
+deliveryForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const city = document.getElementById('citySelect').value;
+    const address = document.getElementById('streetAddress').value;
+    const postalCode = document.getElementById('postalCode').value;
+    const deliveryType = document.querySelector('input[name="deliveryType"]:checked').value;
+    const comment = document.getElementById('orderComment').value;
+
+    // Перевірка
+    if (!city || !address || !postalCode) {
+        showToast('Будь ласка, заповніть всі поля!');
+        return;
+    }
+
+    const cityNames = {
+        kyiv: 'Київ',
+        lviv: 'Львів',
+        odesa: 'Одеса',
+        dnipro: 'Дніпро',
+        kharkiv: 'Харків',
+        zaporizhzhia: 'Запоріжжя',
+        khmelnytskyi: 'Хмельницький',
+        vinnytsia: 'Вінниця',
+        cherkasy: 'Черкаси',
+        zhytomyr: 'Житомир'
+    };
+
+    const deliveryNames = {
+        courier: 'Кур\'єр',
+        'nova-poshta': 'Нова Пошта',
+        'self-pickup': 'Самовивіз'
+    };
+
+    // Формуємо повідомлення для користувача
+    const orderMessage = `✅ **ЗАМОВЛЕННЯ ПІДТВЕРДЖЕНО!**
+
+📦 Товари:
+${Object.entries(state.cart).map(([id, qty]) => {
+    const p = PRODUCTS.find(p => p.id === Number(id));
+    return `  • ${p.name} × ${qty} = ${fmt(p.price * qty)} ₴`;
+}).join('\n')}
+
+💰 Сума: ${fmt(cartTotal())} ₴
+
+🚚 Доставка:
+  • Місто: ${cityNames[city] || city}
+  • Адреса: ${address}
+  • Індекс: ${postalCode}
+  • Спосіб: ${deliveryNames[deliveryType] || deliveryType}
+${comment ? `📝 Коментар: ${comment}` : ''}
+
+Дякуємо за покупку! 🎉`;
+
+    // Показуємо повідомлення
+    showToast('✅ Замовлення оформлено! Перевірте деталі нижче.');
+    
+    // Можна вивести в консоль або в alert
+    console.log(orderMessage);
+    alert(orderMessage);
+
+    // Очищуємо кошик
     state.cart = {};
     renderCartCount();
     renderCartBody();
     renderGrid();
-    setTimeout(closeCart, 900);
+    
+    // Закриваємо модалку
+    closeDelivery();
+    
+    // Очищуємо форму
+    deliveryForm.reset();
 });
 
 /* ================= INIT ================= */
