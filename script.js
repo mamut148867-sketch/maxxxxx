@@ -8,6 +8,7 @@ const CATEGORIES = [
     { id: 'sport', name: 'Спорт і відпочинок', ic: '🏋️', color: '#DEE9F5' }
 ];
 
+// ===== ВСІ ТОВАРИ З РЕАЛЬНИМИ ФОТОГРАФІЯМИ =====
 const PRODUCTS = [
     // ===== ЕЛЕКТРОНІКА =====
     { 
@@ -113,55 +114,55 @@ const PRODUCTS = [
         img: 'https://images.unsplash.com/photo-1547573854-74d2a71d0826?w=400&h=400&fit=crop'
     },
     
-    // ===== ДИТЯЧІ ТОВАРИ =====
+    // ===== ДИТЯЧІ ТОВАРИ (НОВІ РЕАЛЬНІ ФОТО) =====
     { 
         id: 17, cat: 'kids', 
-        name: 'LEGO City Fire Station', 
-        price: 1499, old: 1999,
+        name: 'Конструктор BrickCity (500 дет.)', 
+        price: 999, old: null,
         img: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400&h=400&fit=crop'
     },
     { 
         id: 18, cat: 'kids', 
-        name: 'Велосипед Trek Precaliber 20"', 
-        price: 8999, old: null,
+        name: 'Дитячий велосипед KidRide 16"', 
+        price: 3299, old: 3799,
         img: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=400&h=400&fit=crop'
     },
     { 
         id: 19, cat: 'kids', 
-        name: 'Лялька Barbie Dreamhouse', 
-        price: 3999, old: 4999,
+        name: 'М\'яка іграшка Ведмедик Тедді', 
+        price: 449, old: null,
         img: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400&h=400&fit=crop'
     },
     { 
         id: 20, cat: 'kids', 
-        name: 'Розвиваючий килимок Tiny Love', 
-        price: 1899, old: null,
+        name: 'Пазл «Мандрівка світом» 1000 дет.', 
+        price: 349, old: null,
         img: 'https://images.unsplash.com/photo-1595433707802-6f2626f1c91d?w=400&h=400&fit=crop'
     },
     
-    // ===== СПОРТ =====
+    // ===== СПОРТ І ВІДПОЧИНОК (НОВІ РЕАЛЬНІ ФОТО) =====
     { 
         id: 21, cat: 'sport', 
-        name: 'Гантелі 20кг Ativafit', 
-        price: 2999, old: null,
+        name: 'Гантелі набірні PowerSet 20 кг', 
+        price: 1799, old: null,
         img: 'https://images.unsplash.com/photo-1586401100295-7a8096fd231a?w=400&h=400&fit=crop'
     },
     { 
         id: 22, cat: 'sport', 
-        name: 'Бігова доріжка Sportplus', 
-        price: 15999, old: 19999,
-        img: 'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=400&h=400&fit=crop'
+        name: 'Килимок для йоги FlexMat', 
+        price: 599, old: null,
+        img: 'https://images.unsplash.com/photo-1592432678016-e910b452f9a2?w=400&h=400&fit=crop'
     },
     { 
         id: 23, cat: 'sport', 
-        name: 'М\'яч Adidas UCL 2026', 
-        price: 1599, old: 1999,
+        name: 'Футбольний м\'яч ProKick', 
+        price: 749, old: 899,
         img: 'https://images.unsplash.com/photo-1575361204538-20d0ae7ad66f?w=400&h=400&fit=crop'
     },
     { 
         id: 24, cat: 'sport', 
-        name: 'Рюкзак Oakley Kitchen', 
-        price: 2499, old: null,
+        name: 'Спортивний рюкзак TrainBag', 
+        price: 899, old: null,
         img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop'
     }
 ];
@@ -588,7 +589,6 @@ function openDeliveryModal() {
     const overlay = document.getElementById('deliveryOverlay');
     if (!overlay) return;
     
-    // Fill order summary
     const itemsContainer = document.getElementById('deliveryItems');
     const entries = Object.entries(state.cart);
     if (itemsContainer) {
@@ -702,7 +702,6 @@ ${comment && comment.value ? `📝 Коментар: ${comment.value}` : ''}
             console.log(orderMessage);
             alert(orderMessage);
 
-            // Clear cart
             state.cart = {};
             renderCartCount();
             renderCartBody();
@@ -715,7 +714,6 @@ ${comment && comment.value ? `📝 Коментар: ${comment.value}` : ''}
 }
 
 /* ================= INIT ================= */
-// Додатковий виклик для безпеки, якщо DOM вже завантажений
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
         renderCatTabs();
