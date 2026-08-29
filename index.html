@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЯРМАРОК — маркетплейс товарів</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site">
+        <div class="top-bar">
+            <div class="logo">ЯРМАРОК<span>маркетплейс</span></div>
+            <form class="search-wrap" id="searchForm">
+                <input type="text" id="searchInput" placeholder="Пошук товарів..." autocomplete="off">
+                <button type="submit">Знайти</button>
+            </form>
+            <div class="header-actions">
+                <button class="cart-btn" id="openCart">
+                    🧺 Кошик
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+        <nav class="cats">
+            <div class="cats-inner" id="catTabs"></div>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="board" id="board"></div>
+    </div>
+
+    <div class="layout">
+        <button class="filters-toggle" id="filtersToggle" aria-expanded="false">
+            <span>🔧 Фільтри та сортування</span>
+            <span class="chev">▾</span>
+        </button>
+        <aside class="filters" id="filtersPanel">
+            <h3>Категорії</h3>
+            <div class="filter-group" id="catChecks"></div>
+            <h3>Ціна, ₴</h3>
+            <div class="filter-group price-range">
+                <input type="range" id="priceMax" min="0" max="35000" step="100" value="35000">
+                <div class="val">до <span id="priceMaxVal">35000</span> ₴</div>
+            </div>
+            <h3>Наявність</h3>
+            <div class="filter-group">
+                <label class="check-row">
+                    <input type="checkbox" id="onlySale"> Тільки зі знижкою
+                </label>
+            </div>
+            <button class="reset-btn" id="resetFilters">Скинути фільтри</button>
+        </aside>
+        <main>
+            <div class="results-bar">
+                <h2>Товари <span class="count" id="resultCount"></span></h2>
+                <select id="sort">
+                    <option value="default">За популярністю</option>
+                    <option value="price-asc">Спочатку дешевші</option>
+                    <option value="price-desc">Спочатку дорожчі</option>
+                    <option value="name">За назвою</option>
+                </select>
+            </div>
+            <div class="grid" id="grid"></div>
+        </main>
+    </div>
+
+    <footer class="site">© 2026 ЯРМАРОК — навчальний демо-маркетплейс</footer>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="drawer" id="drawer">
+        <div class="drawer-head">
+            <h3>Ваш кошик</h3>
+            <button id="closeCart" aria-label="Закрити">×</button>
+        </div>
+        <div class="drawer-body" id="cartBody"></div>
+        <div class="drawer-foot">
+            <div class="total-row">
+                <span class="label">Разом</span>
+                <span class="sum" id="cartTotal">0 ₴</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Оформити замовлення</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
