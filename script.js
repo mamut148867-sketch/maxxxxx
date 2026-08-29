@@ -1,14 +1,13 @@
 const CATEGORIES = [
-    { id: 'electronics', name: 'Електроніка', ic: '💻', color: '#DCEDEA' },
-    { id: 'appliances', name: 'Побутова техніка', ic: '🧺', color: '#F3E7D6' },
-    { id: 'fashion', name: 'Мода', ic: '👕', color: '#F6DED6' },
-    { id: 'home', name: 'Дім і сад', ic: '🪴', color: '#E4EFDA' },
-    { id: 'kids', name: 'Дитячі товари', ic: '🧸', color: '#F7E4EE' },
-    { id: 'sport', name: 'Спорт і відпочинок', ic: '🏋️', color: '#DEE9F5' }
+    { id: 'electronics', name: 'Електроніка', color: '#DCEDEA' },
+    { id: 'appliances', name: 'Побутова техніка', color: '#F3E7D6' },
+    { id: 'fashion', name: 'Мода', color: '#F6DED6' },
+    { id: 'home', name: 'Дім і сад', color: '#E4EFDA' },
+    { id: 'kids', name: 'Дитячі товари', color: '#F7E4EE' },
+    { id: 'sport', name: 'Спорт і відпочинок', color: '#DEE9F5' }
 ];
 
-// ===== РЕАЛЬНІ ФОТО З БЕЗКОШТОВНОГО CDN =====
-// Використовуємо picsum.photos - спеціальний сервіс для генерації фото
+// ===== ВСІ ТОВАРИ З РЕАЛЬНИМИ ФОТО =====
 const PRODUCTS = [
     // ЕЛЕКТРОНІКА
     { id: 1, cat: 'electronics', name: 'Samsung Galaxy S24 Ultra 512GB', price: 52999, old: 56999, img: 'https://picsum.photos/seed/samsung/400/400' },
@@ -75,10 +74,10 @@ function showToast(msg) {
 function renderCatTabs() {
     const wrap = document.getElementById('catTabs');
     if (!wrap) return;
-    const all = [{ id: 'all', name: 'Усі товари', ic: '🗂️' }, ...CATEGORIES];
+    const all = [{ id: 'all', name: 'Усі товари' }, ...CATEGORIES];
     wrap.innerHTML = all.map(c => `
         <button class="cat-tab ${state.activeCat === c.id ? 'active' : ''}" data-cat="${c.id}">
-            <span class="ic">${c.ic}</span>${c.name}
+            ${c.name}
         </button>
     `).join('');
     wrap.querySelectorAll('.cat-tab').forEach(btn => {
@@ -98,7 +97,7 @@ function renderFilterChecks() {
     wrap.innerHTML = CATEGORIES.map(c => `
         <label class="check-row">
             <input type="checkbox" value="${c.id}" ${state.checkedCats.has(c.id) ? 'checked' : ''}>
-            ${c.ic} ${c.name}
+            ${c.name}
         </label>
     `).join('');
     wrap.querySelectorAll('input').forEach(inp => {
@@ -127,7 +126,7 @@ function renderBoard() {
         <div class="board-head">
             <div class="eyebrow">// сьогоднішні знижки</div>
             <h1>Торгуємось<br>чесно</h1>
-            <p>Три позиції з найбільшою вигодою на сьогодні — розбирають швидко.</p>
+            <p>Три позиції з найбільшою вигодою на сьогодні</p>
         </div>
         ${deals.map(d => {
             const off = Math.round(100 - (d.price / d.old * 100));
@@ -176,7 +175,7 @@ function renderGrid() {
     const resultCount = document.getElementById('resultCount');
     if (resultCount) resultCount.textContent = `(${list.length})`;
     if (list.length === 0) {
-        grid.innerHTML = `<div class="empty-state"><span class="ic">🕳️</span>Нічого не знайдено.<br>Спробуйте змінити фільтри або пошуковий запит.</div>`;
+        grid.innerHTML = `<div class="empty-state">Нічого не знайдено</div>`;
         return;
     }
     grid.innerHTML = list.map(p => {
@@ -186,9 +185,9 @@ function renderGrid() {
         <div class="card">
             <div class="thumb" style="background:${c ? c.color : '#eee'};display:flex;align-items:center;justify-content:center;overflow:hidden;">
                 ${p.old !== null ? `<span class="sale-flag">Знижка</span>` : ''}
-                <img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:50px;\\'>📦</span>'">
+                <img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:30px;color:#999;\\'>Немає фото</span>'">
             </div>
-            <div class="cat-label">${c ? c.name : 'Без категорії'}</div>
+            <div class="cat-label">${c ? c.name : ''}</div>
             <div class="name">${p.name}</div>
             <div class="tag-row">
                 <div class="price-tag">
@@ -257,7 +256,7 @@ function renderCartBody() {
     const checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) checkoutBtn.disabled = entries.length === 0;
     if (entries.length === 0) {
-        body.innerHTML = `<div class="cart-empty"><span class="ic">🧺</span>Кошик поки порожній.<br>Додайте щось із ярмарку!</div>`;
+        body.innerHTML = `<div class="cart-empty">Кошик поки порожній</div>`;
         const subtotal = document.getElementById('cartSubtotal');
         if (subtotal) subtotal.textContent = '0 ₴';
         return;
