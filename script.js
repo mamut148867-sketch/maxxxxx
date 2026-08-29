@@ -7,39 +7,27 @@ const CATEGORIES = [
     { id: 'sport', name: 'Спорт і відпочинок', color: '#DEE9F5' }
 ];
 
-// ===== ВСІ ТОВАРИ З РЕАЛЬНИМИ ФОТО =====
 const PRODUCTS = [
-    // ЕЛЕКТРОНІКА
     { id: 1, cat: 'electronics', name: 'Samsung Galaxy S24 Ultra 512GB', price: 52999, old: 56999, img: 'https://picsum.photos/seed/samsung/400/400' },
     { id: 2, cat: 'electronics', name: 'iPhone 15 Pro Max 256GB', price: 49999, old: 52999, img: 'https://picsum.photos/seed/iphone/400/400' },
     { id: 3, cat: 'electronics', name: 'MacBook Air 15" M3', price: 45999, old: null, img: 'https://picsum.photos/seed/macbook/400/400' },
     { id: 4, cat: 'electronics', name: 'Samsung Galaxy Buds 3 Pro', price: 7999, old: 9999, img: 'https://picsum.photos/seed/buds/400/400' },
-    
-    // ПОБУТОВА ТЕХНІКА
     { id: 5, cat: 'appliances', name: 'Робот-пилосос Xiaomi S10', price: 12999, old: 15999, img: 'https://picsum.photos/seed/vacuum/400/400' },
     { id: 6, cat: 'appliances', name: 'Холодильник LG InstaView', price: 32999, old: null, img: 'https://picsum.photos/seed/fridge/400/400' },
     { id: 7, cat: 'appliances', name: 'Мультиварка Philips HD', price: 4999, old: null, img: 'https://picsum.photos/seed/cooker/400/400' },
     { id: 8, cat: 'appliances', name: 'Праска Tefal Ultimate', price: 2999, old: 3999, img: 'https://picsum.photos/seed/iron/400/400' },
-    
-    // МОДА
     { id: 9, cat: 'fashion', name: 'Куртка North Face Nuptse', price: 12999, old: 15999, img: 'https://picsum.photos/seed/jacket/400/400' },
     { id: 10, cat: 'fashion', name: 'Кросівки Nike Air Max 90', price: 5999, old: null, img: 'https://picsum.photos/seed/shoes/400/400' },
     { id: 11, cat: 'fashion', name: 'Сумка Michael Kors', price: 8999, old: 11999, img: 'https://picsum.photos/seed/bag/400/400' },
     { id: 12, cat: 'fashion', name: 'Пальто Zara Premium', price: 4999, old: null, img: 'https://picsum.photos/seed/coat/400/400' },
-    
-    // ДІМ ТА САД
     { id: 13, cat: 'home', name: 'Диван IKEA Vimle 3-місний', price: 15999, old: 18999, img: 'https://picsum.photos/seed/sofa/400/400' },
     { id: 14, cat: 'home', name: 'Набір посуду Tefal 12 пр.', price: 3499, old: null, img: 'https://picsum.photos/seed/dishes/400/400' },
     { id: 15, cat: 'home', name: 'Світильник IKEA FADO', price: 799, old: null, img: 'https://picsum.photos/seed/lamp/400/400' },
     { id: 16, cat: 'home', name: 'Штучна ялина Balsam Hill', price: 2499, old: 3499, img: 'https://picsum.photos/seed/tree/400/400' },
-    
-    // ДИТЯЧІ ТОВАРИ
     { id: 17, cat: 'kids', name: 'Конструктор BrickCity (500 дет.)', price: 999, old: null, img: 'https://picsum.photos/seed/lego/400/400' },
     { id: 18, cat: 'kids', name: 'Дитячий велосипед KidRide 16"', price: 3299, old: 3799, img: 'https://picsum.photos/seed/bike/400/400' },
     { id: 19, cat: 'kids', name: 'М\'яка іграшка Ведмедик Тедді', price: 449, old: null, img: 'https://picsum.photos/seed/bear/400/400' },
     { id: 20, cat: 'kids', name: 'Пазл «Мандрівка світом» 1000 дет.', price: 349, old: null, img: 'https://picsum.photos/seed/puzzle/400/400' },
-    
-    // СПОРТ
     { id: 21, cat: 'sport', name: 'Гантелі набірні PowerSet 20 кг', price: 1799, old: null, img: 'https://picsum.photos/seed/dumbbell/400/400' },
     { id: 22, cat: 'sport', name: 'Килимок для йоги FlexMat', price: 599, old: null, img: 'https://picsum.photos/seed/yoga/400/400' },
     { id: 23, cat: 'sport', name: 'Футбольний м\'яч ProKick', price: 749, old: 899, img: 'https://picsum.photos/seed/ball/400/400' },
@@ -125,7 +113,7 @@ function renderBoard() {
     board.innerHTML = `
         <div class="board-head">
             <div class="eyebrow">// сьогоднішні знижки</div>
-            <h1>Торгуємось<br>чесно</h1>
+            <h1>Торгуємось чесно</h1>
             <p>Три позиції з найбільшою вигодою на сьогодні</p>
         </div>
         ${deals.map(d => {
@@ -183,9 +171,9 @@ function renderGrid() {
         const inCart = state.cart[p.id] || 0;
         return `
         <div class="card">
-            <div class="thumb" style="background:${c ? c.color : '#eee'};display:flex;align-items:center;justify-content:center;overflow:hidden;">
+            <div class="thumb" style="background:${c ? c.color : '#eee'}">
                 ${p.old !== null ? `<span class="sale-flag">Знижка</span>` : ''}
-                <img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:30px;color:#999;\\'>Немає фото</span>'">
+                <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'">
             </div>
             <div class="cat-label">${c ? c.name : ''}</div>
             <div class="name">${p.name}</div>
@@ -196,7 +184,7 @@ function renderGrid() {
                 </div>
             </div>
             <button class="add-btn ${inCart > 0 ? 'added' : ''}" data-id="${p.id}">
-                ${inCart > 0 ? `✓ У кошику (${inCart})` : 'Додати в кошик'}
+                ${inCart > 0 ? `У кошику (${inCart})` : 'Додати в кошик'}
             </button>
         </div>`;
     }).join('');
@@ -267,8 +255,8 @@ function renderCartBody() {
         const c = catMap[p.cat] || { color: '#eee' };
         return `
         <div class="cart-item">
-            <div class="thumb-sm" style="background:${c.color};display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                <img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.textContent='📦'">
+            <div class="thumb-sm" style="background:${c.color}">
+                <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'">
             </div>
             <div class="info">
                 <div class="name">${p.name}</div>

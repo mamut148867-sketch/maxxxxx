@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ЯРМАРОК — маркетплейс товарів</title>
+    <title>Ярмарок — маркетплейс товарів</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -11,17 +11,16 @@
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
     <header class="site">
         <div class="top-bar">
-            <div class="logo">ЯРМАРОК<span>маркетплейс</span></div>
+            <div class="logo">Ярмарок</div>
             <form class="search-wrap" id="searchForm">
                 <input type="text" id="searchInput" placeholder="Пошук товарів..." autocomplete="off">
                 <button type="submit">Знайти</button>
             </form>
             <div class="header-actions">
                 <button class="cart-btn" id="openCart">
-                    🛒 Кошик
+                    Кошик
                     <span class="cart-count" id="cartCount">0</span>
                 </button>
             </div>
@@ -31,21 +30,19 @@
         </nav>
     </header>
 
-    <!-- ===== HERO ===== -->
     <div class="hero">
         <div class="board" id="board"></div>
     </div>
 
-    <!-- ===== LAYOUT ===== -->
     <div class="layout">
         <button class="filters-toggle" id="filtersToggle" aria-expanded="false">
-            <span>🔧 Фільтри та сортування</span>
+            <span>Фільтри та сортування</span>
             <span class="chev">▾</span>
         </button>
         <aside class="filters" id="filtersPanel">
             <h3>Категорії</h3>
             <div class="filter-group" id="catChecks"></div>
-            <h3>Ціна, ₴</h3>
+            <h3>Ціна</h3>
             <div class="filter-group price-range">
                 <input type="range" id="priceMax" min="0" max="60000" step="100" value="60000">
                 <div class="val">до <span id="priceMaxVal">60000</span> ₴</div>
@@ -72,13 +69,12 @@
         </main>
     </div>
 
-    <footer class="site">© 2026 ЯРМАРОК — навчальний демо-маркетплейс</footer>
+    <footer class="site">© 2026 Ярмарок — навчальний демо-маркетплейс</footer>
 
-    <!-- ===== CART DRAWER ===== -->
     <div class="overlay" id="overlay"></div>
     <div class="drawer" id="drawer">
         <div class="drawer-head">
-            <h3>🛒 Ваш кошик</h3>
+            <h3>Ваш кошик</h3>
             <button id="closeCart">×</button>
         </div>
         <div class="drawer-body" id="cartBody"></div>
@@ -91,17 +87,16 @@
         </div>
     </div>
 
-    <!-- ===== DELIVERY MODAL ===== -->
     <div class="delivery-overlay" id="deliveryOverlay">
         <div class="delivery-modal">
             <div class="delivery-header">
-                <h3>🛒 Оформлення замовлення</h3>
+                <h3>Оформлення замовлення</h3>
                 <button class="delivery-close" id="deliveryClose">×</button>
             </div>
             <div class="delivery-body">
                 <form id="deliveryForm">
                     <div class="delivery-field">
-                        <label for="citySelect">📍 Місто доставки</label>
+                        <label for="citySelect">Місто доставки</label>
                         <select id="citySelect" required>
                             <option value="">Оберіть місто</option>
                             <option value="kyiv">Київ</option>
@@ -117,46 +112,45 @@
                         </select>
                     </div>
                     <div class="delivery-field">
-                        <label for="streetAddress">🏠 Вулиця, будинок, квартира</label>
+                        <label for="streetAddress">Вулиця, будинок, квартира</label>
                         <input type="text" id="streetAddress" placeholder="вул. Хрещатик, 1, кв. 10" required>
                     </div>
                     <div class="delivery-field">
-                        <label for="postalCode">📮 Поштовий індекс</label>
+                        <label for="postalCode">Поштовий індекс</label>
                         <input type="text" id="postalCode" placeholder="01001" required pattern="[0-9]{5}" maxlength="5">
                     </div>
                     <div class="delivery-options">
                         <label class="delivery-option">
                             <input type="radio" name="deliveryType" value="courier" checked>
-                            🚚 Кур'єр (безкоштовно)
+                            Кур'єр (безкоштовно)
                         </label>
                         <label class="delivery-option">
                             <input type="radio" name="deliveryType" value="nova-poshta">
-                            📦 Нова Пошта (за тарифами)
+                            Нова Пошта (за тарифами)
                         </label>
                         <label class="delivery-option">
                             <input type="radio" name="deliveryType" value="self-pickup">
-                            🏪 Самовивіз (безкоштовно)
+                            Самовивіз (безкоштовно)
                         </label>
                     </div>
                     <div class="delivery-field">
-                        <label for="orderComment">💬 Коментар до замовлення</label>
+                        <label for="orderComment">Коментар до замовлення</label>
                         <textarea id="orderComment" placeholder="Ваші побажання до замовлення"></textarea>
                     </div>
                     <div class="delivery-order-summary">
-                        <h4>📋 Ваше замовлення</h4>
+                        <h4>Ваше замовлення</h4>
                         <div id="deliveryItems"></div>
                         <div class="delivery-total">
                             <span>Разом до сплати</span>
                             <span id="deliveryTotalPrice">0 ₴</span>
                         </div>
                     </div>
-                    <button type="submit" class="delivery-submit">✅ Підтвердити замовлення</button>
+                    <button type="submit" class="delivery-submit">Підтвердити замовлення</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- ===== TOAST ===== -->
     <div class="toast" id="toast"></div>
 
     <script src="script.js"></script>
