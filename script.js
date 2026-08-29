@@ -1,3 +1,7 @@
+// ============================================================
+// 1. ДАНІ
+// ============================================================
+
 const CATEGORIES = [
     { id: 'electronics', name: 'Електроніка', ic: '💻', color: '#DCEDEA' },
     { id: 'appliances', name: 'Побутова техніка', ic: '🧺', color: '#F3E7D6' },
@@ -7,39 +11,38 @@ const CATEGORIES = [
     { id: 'sport', name: 'Спорт і відпочинок', ic: '🏋️', color: '#DEE9F5' }
 ];
 
-// ===== ВСІ ТОВАРИ З ВБУДОВАНИМИ КАРТИНКАМИ (SVG) =====
 const PRODUCTS = [
-    // ===== ЕЛЕКТРОНІКА =====
+    // ЕЛЕКТРОНІКА
     { id: 1, cat: 'electronics', name: 'Samsung Galaxy S24 Ultra 512GB', price: 52999, old: 56999, img: '📱' },
     { id: 2, cat: 'electronics', name: 'iPhone 15 Pro Max 256GB', price: 49999, old: 52999, img: '📱' },
     { id: 3, cat: 'electronics', name: 'MacBook Air 15" M3', price: 45999, old: null, img: '💻' },
     { id: 4, cat: 'electronics', name: 'Samsung Galaxy Buds 3 Pro', price: 7999, old: 9999, img: '🎧' },
     
-    // ===== ПОБУТОВА ТЕХНІКА =====
+    // ПОБУТОВА ТЕХНІКА
     { id: 5, cat: 'appliances', name: 'Робот-пилосос Xiaomi S10', price: 12999, old: 15999, img: '🤖' },
     { id: 6, cat: 'appliances', name: 'Холодильник LG InstaView', price: 32999, old: null, img: '🧊' },
     { id: 7, cat: 'appliances', name: 'Мультиварка Philips HD', price: 4999, old: null, img: '🍲' },
     { id: 8, cat: 'appliances', name: 'Праска Tefal Ultimate', price: 2999, old: 3999, img: '👕' },
     
-    // ===== МОДА =====
+    // МОДА
     { id: 9, cat: 'fashion', name: 'Куртка North Face Nuptse', price: 12999, old: 15999, img: '🧥' },
     { id: 10, cat: 'fashion', name: 'Кросівки Nike Air Max 90', price: 5999, old: null, img: '👟' },
     { id: 11, cat: 'fashion', name: 'Сумка Michael Kors', price: 8999, old: 11999, img: '👜' },
     { id: 12, cat: 'fashion', name: 'Пальто Zara Premium', price: 4999, old: null, img: '🧥' },
     
-    // ===== ДІМ ТА САД =====
+    // ДІМ ТА САД
     { id: 13, cat: 'home', name: 'Диван IKEA Vimle 3-місний', price: 15999, old: 18999, img: '🛋️' },
     { id: 14, cat: 'home', name: 'Набір посуду Tefal 12 пр.', price: 3499, old: null, img: '🍳' },
     { id: 15, cat: 'home', name: 'Світильник IKEA FADO', price: 799, old: null, img: '💡' },
     { id: 16, cat: 'home', name: 'Штучна ялина Balsam Hill', price: 2499, old: 3499, img: '🎄' },
     
-    // ===== ДИТЯЧІ ТОВАРИ =====
+    // ДИТЯЧІ ТОВАРИ
     { id: 17, cat: 'kids', name: 'Конструктор BrickCity (500 дет.)', price: 999, old: null, img: '🧱' },
     { id: 18, cat: 'kids', name: 'Дитячий велосипед KidRide 16"', price: 3299, old: 3799, img: '🚲' },
     { id: 19, cat: 'kids', name: 'М\'яка іграшка Ведмедик Тедді', price: 449, old: null, img: '🧸' },
     { id: 20, cat: 'kids', name: 'Пазл «Мандрівка світом» 1000 дет.', price: 349, old: null, img: '🧩' },
     
-    // ===== СПОРТ =====
+    // СПОРТ
     { id: 21, cat: 'sport', name: 'Гантелі набірні PowerSet 20 кг', price: 1799, old: null, img: '🏋️' },
     { id: 22, cat: 'sport', name: 'Килимок для йоги FlexMat', price: 599, old: null, img: '🧘' },
     { id: 23, cat: 'sport', name: 'Футбольний м\'яч ProKick', price: 749, old: 899, img: '⚽' },
@@ -47,6 +50,10 @@ const PRODUCTS = [
 ];
 
 const catMap = Object.fromEntries(CATEGORIES.map(c => [c.id, c]));
+
+// ============================================================
+// 2. СТАН
+// ============================================================
 
 let state = {
     activeCat: 'all',
@@ -58,9 +65,26 @@ let state = {
     cart: {}
 };
 
+// ============================================================
+// 3. ДОПОМІЖНІ ФУНКЦІЇ
+// ============================================================
+
 function fmt(n) {
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
+
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window.toastTimer);
+    window.toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ============================================================
+// 4. РЕНДЕР: КАТЕГОРІЇ
+// ============================================================
 
 function renderCatTabs() {
     const wrap = document.getElementById('catTabs');
@@ -81,6 +105,10 @@ function renderCatTabs() {
         });
     });
 }
+
+// ============================================================
+// 5. РЕНДЕР: ФІЛЬТРИ
+// ============================================================
 
 function renderFilterChecks() {
     const wrap = document.getElementById('catChecks');
@@ -105,6 +133,10 @@ function renderFilterChecks() {
     });
 }
 
+// ============================================================
+// 6. РЕНДЕР: БАНЕР
+// ============================================================
+
 function renderBoard() {
     const board = document.getElementById('board');
     if (!board) return;
@@ -124,7 +156,7 @@ function renderBoard() {
             return `
             <div class="deal-card">
                 <span class="badge">-${off}%</span>
-                <span class="ic" style="font-size:40px;">${d.img}</span>
+                <span style="font-size:40px;">${d.img}</span>
                 <span class="name">${d.name}</span>
                 <div class="prices">
                     <span class="now">${fmt(d.price)} ₴</span>
@@ -134,6 +166,10 @@ function renderBoard() {
         }).join('')}
     `;
 }
+
+// ============================================================
+// 7. РЕНДЕР: ТОВАРИ (ГРИД)
+// ============================================================
 
 function getFiltered() {
     let list = PRODUCTS.slice();
@@ -176,7 +212,7 @@ function renderGrid() {
         <div class="card">
             <div class="thumb" style="background:${c ? c.color : '#eee'};font-size:60px;display:flex;align-items:center;justify-content:center;">
                 ${p.old !== null ? `<span class="sale-flag">Знижка</span>` : ''}
-                <span>${p.img}</span>
+                ${p.img}
             </div>
             <div class="cat-label">${c ? c.name : 'Без категорії'}</div>
             <div class="name">${p.name}</div>
@@ -199,6 +235,10 @@ function renderGrid() {
         });
     });
 }
+
+// ============================================================
+// 8. КОШИК
+// ============================================================
 
 function addToCart(id) {
     state.cart[id] = (state.cart[id] || 0) + 1;
@@ -259,7 +299,7 @@ function renderCartBody() {
         return `
         <div class="cart-item">
             <div class="thumb-sm" style="background:${c.color};font-size:30px;display:flex;align-items:center;justify-content:center;">
-                <span>${p.img}</span>
+                ${p.img}
             </div>
             <div class="info">
                 <div class="name">${p.name}</div>
@@ -287,16 +327,9 @@ function renderCartBody() {
     });
 }
 
-let toastTimer;
-
-function showToast(msg) {
-    const t = document.getElementById('toast');
-    if (!t) return;
-    t.textContent = msg;
-    t.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
-}
+// ============================================================
+// 9. ДОСТАВКА (МОДАЛЬНЕ ВІКНО)
+// ============================================================
 
 function openDeliveryModal() {
     const overlay = document.getElementById('deliveryOverlay');
@@ -368,7 +401,6 @@ function initDeliveryModal() {
                 return p ? `  • ${p.img} ${p.name} × ${qty} = ${fmt(p.price * qty)} ₴` : '';
             }).filter(line => line).join('\n')}\n\n💰 Сума: ${fmt(cartTotal())} ₴\n\n🚚 Доставка:\n  • Місто: ${cityNames[cityValue] || cityValue}\n  • Адреса: ${addressValue}\n  • Індекс: ${postalCodeValue}\n  • Спосіб: ${deliveryNames[deliveryTypeValue] || deliveryTypeValue}\n${comment && comment.value ? `\n📝 Коментар: ${comment.value}` : ''}\n\nДякуємо за покупку! 🎉`;
             showToast('✅ Замовлення оформлено!');
-            console.log(orderMessage);
             alert(orderMessage);
             state.cart = {};
             renderCartCount();
@@ -379,6 +411,10 @@ function initDeliveryModal() {
         });
     }
 }
+
+// ============================================================
+// 10. ПІДКЛЮЧЕННЯ ПОДІЙ
+// ============================================================
 
 document.addEventListener('DOMContentLoaded', function() {
     const searchForm = document.getElementById('searchForm');
@@ -493,6 +529,10 @@ document.addEventListener('DOMContentLoaded', function() {
     renderCartBody();
     renderGrid();
 });
+
+// ============================================================
+// 11. ЗАПУСК
+// ============================================================
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
