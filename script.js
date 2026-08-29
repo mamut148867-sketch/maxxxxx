@@ -7,43 +7,43 @@ const CATEGORIES = [
     { id: 'sport', name: 'Спорт і відпочинок', ic: '🏋️', color: '#DEE9F5' }
 ];
 
-// ===== ВИПРАВЛЕНІ ТОВАРИ З РОБОЧИМИ ФОТО =====
+// ===== ВСІ ТОВАРИ З ВБУДОВАНИМИ КАРТИНКАМИ (SVG) =====
 const PRODUCTS = [
     // ===== ЕЛЕКТРОНІКА =====
-    { id: 1, cat: 'electronics', name: 'Samsung Galaxy S24 Ultra 512GB', price: 52999, old: 56999, img: 'https://cdn.pixabay.com/photo/2024/01/18/10/51/samsung-galaxy-s24-8516260_640.jpg' },
-    { id: 2, cat: 'electronics', name: 'iPhone 15 Pro Max 256GB', price: 49999, old: 52999, img: 'https://cdn.pixabay.com/photo/2023/09/20/22/07/iphone-15-8266687_640.jpg' },
-    { id: 3, cat: 'electronics', name: 'MacBook Air 15" M3', price: 45999, old: null, img: 'https://cdn.pixabay.com/photo/2020/05/18/18/57/macbook-5191492_640.jpg' },
-    { id: 4, cat: 'electronics', name: 'Samsung Galaxy Buds 3 Pro', price: 7999, old: 9999, img: 'https://cdn.pixabay.com/photo/2023/02/21/18/31/earbuds-7805651_640.jpg' },
+    { id: 1, cat: 'electronics', name: 'Samsung Galaxy S24 Ultra 512GB', price: 52999, old: 56999, img: '📱' },
+    { id: 2, cat: 'electronics', name: 'iPhone 15 Pro Max 256GB', price: 49999, old: 52999, img: '📱' },
+    { id: 3, cat: 'electronics', name: 'MacBook Air 15" M3', price: 45999, old: null, img: '💻' },
+    { id: 4, cat: 'electronics', name: 'Samsung Galaxy Buds 3 Pro', price: 7999, old: 9999, img: '🎧' },
     
     // ===== ПОБУТОВА ТЕХНІКА =====
-    { id: 5, cat: 'appliances', name: 'Робот-пилосос Xiaomi S10', price: 12999, old: 15999, img: 'https://cdn.pixabay.com/photo/2018/03/30/20/50/robot-vacuum-3275842_640.jpg' },
-    { id: 6, cat: 'appliances', name: 'Холодильник LG InstaView', price: 32999, old: null, img: 'https://cdn.pixabay.com/photo/2016/06/02/18/53/refrigerator-1431491_640.jpg' },
-    { id: 7, cat: 'appliances', name: 'Мультиварка Philips HD', price: 4999, old: null, img: 'https://cdn.pixabay.com/photo/2020/09/24/20/42/multicooker-5599550_640.jpg' },
-    { id: 8, cat: 'appliances', name: 'Праска Tefal Ultimate', price: 2999, old: 3999, img: 'https://cdn.pixabay.com/photo/2016/10/16/05/04/iron-1744389_640.jpg' },
+    { id: 5, cat: 'appliances', name: 'Робот-пилосос Xiaomi S10', price: 12999, old: 15999, img: '🤖' },
+    { id: 6, cat: 'appliances', name: 'Холодильник LG InstaView', price: 32999, old: null, img: '🧊' },
+    { id: 7, cat: 'appliances', name: 'Мультиварка Philips HD', price: 4999, old: null, img: '🍲' },
+    { id: 8, cat: 'appliances', name: 'Праска Tefal Ultimate', price: 2999, old: 3999, img: '👕' },
     
     // ===== МОДА =====
-    { id: 9, cat: 'fashion', name: 'Куртка North Face Nuptse', price: 12999, old: 15999, img: 'https://cdn.pixabay.com/photo/2018/11/22/23/14/jacket-3832457_640.jpg' },
-    { id: 10, cat: 'fashion', name: 'Кросівки Nike Air Max 90', price: 5999, old: null, img: 'https://cdn.pixabay.com/photo/2017/11/17/11/50/sports-2957166_640.jpg' },
-    { id: 11, cat: 'fashion', name: 'Сумка Michael Kors', price: 8999, old: 11999, img: 'https://cdn.pixabay.com/photo/2017/08/02/01/12/handbag-2568992_640.jpg' },
-    { id: 12, cat: 'fashion', name: 'Пальто Zara Premium', price: 4999, old: null, img: 'https://cdn.pixabay.com/photo/2017/07/02/19/03/fashion-2465022_640.jpg' },
+    { id: 9, cat: 'fashion', name: 'Куртка North Face Nuptse', price: 12999, old: 15999, img: '🧥' },
+    { id: 10, cat: 'fashion', name: 'Кросівки Nike Air Max 90', price: 5999, old: null, img: '👟' },
+    { id: 11, cat: 'fashion', name: 'Сумка Michael Kors', price: 8999, old: 11999, img: '👜' },
+    { id: 12, cat: 'fashion', name: 'Пальто Zara Premium', price: 4999, old: null, img: '🧥' },
     
     // ===== ДІМ ТА САД =====
-    { id: 13, cat: 'home', name: 'Диван IKEA Vimle 3-місний', price: 15999, old: 18999, img: 'https://cdn.pixabay.com/photo/2014/11/11/09/50/sofa-526715_640.jpg' },
-    { id: 14, cat: 'home', name: 'Набір посуду Tefal 12 пр.', price: 3499, old: null, img: 'https://cdn.pixabay.com/photo/2016/11/29/12/33/kitchen-1864532_640.jpg' },
-    { id: 15, cat: 'home', name: 'Світильник IKEA FADO', price: 799, old: null, img: 'https://cdn.pixabay.com/photo/2016/11/18/13/54/lamp-1834710_640.jpg' },
-    { id: 16, cat: 'home', name: 'Штучна ялина Balsam Hill', price: 2499, old: 3499, img: 'https://cdn.pixabay.com/photo/2020/12/18/11/50/christmas-tree-5841212_640.jpg' },
+    { id: 13, cat: 'home', name: 'Диван IKEA Vimle 3-місний', price: 15999, old: 18999, img: '🛋️' },
+    { id: 14, cat: 'home', name: 'Набір посуду Tefal 12 пр.', price: 3499, old: null, img: '🍳' },
+    { id: 15, cat: 'home', name: 'Світильник IKEA FADO', price: 799, old: null, img: '💡' },
+    { id: 16, cat: 'home', name: 'Штучна ялина Balsam Hill', price: 2499, old: 3499, img: '🎄' },
     
     // ===== ДИТЯЧІ ТОВАРИ =====
-    { id: 17, cat: 'kids', name: 'Конструктор BrickCity (500 дет.)', price: 999, old: null, img: 'https://cdn.pixabay.com/photo/2018/10/14/20/16/lego-3748304_640.jpg' },
-    { id: 18, cat: 'kids', name: 'Дитячий велосипед KidRide 16"', price: 3299, old: 3799, img: 'https://cdn.pixabay.com/photo/2022/02/11/20/53/kid-bike-7008329_640.jpg' },
-    { id: 19, cat: 'kids', name: 'М\'яка іграшка Ведмедик Тедді', price: 449, old: null, img: 'https://cdn.pixabay.com/photo/2016/01/17/19/48/teddy-bear-1145576_640.jpg' },
-    { id: 20, cat: 'kids', name: 'Пазл «Мандрівка світом» 1000 дет.', price: 349, old: null, img: 'https://cdn.pixabay.com/photo/2018/06/10/17/44/puzzle-3465276_640.jpg' },
+    { id: 17, cat: 'kids', name: 'Конструктор BrickCity (500 дет.)', price: 999, old: null, img: '🧱' },
+    { id: 18, cat: 'kids', name: 'Дитячий велосипед KidRide 16"', price: 3299, old: 3799, img: '🚲' },
+    { id: 19, cat: 'kids', name: 'М\'яка іграшка Ведмедик Тедді', price: 449, old: null, img: '🧸' },
+    { id: 20, cat: 'kids', name: 'Пазл «Мандрівка світом» 1000 дет.', price: 349, old: null, img: '🧩' },
     
     // ===== СПОРТ =====
-    { id: 21, cat: 'sport', name: 'Гантелі набірні PowerSet 20 кг', price: 1799, old: null, img: 'https://cdn.pixabay.com/photo/2016/11/19/12/40/dumbbells-1839083_640.jpg' },
-    { id: 22, cat: 'sport', name: 'Килимок для йоги FlexMat', price: 599, old: null, img: 'https://cdn.pixabay.com/photo/2015/06/07/16/53/yoga-800916_640.jpg' },
-    { id: 23, cat: 'sport', name: 'Футбольний м\'яч ProKick', price: 749, old: 899, img: 'https://cdn.pixabay.com/photo/2012/10/18/16/15/soccer-ball-61711_640.jpg' },
-    { id: 24, cat: 'sport', name: 'Спортивний рюкзак TrainBag', price: 899, old: null, img: 'https://cdn.pixabay.com/photo/2016/11/18/13/03/backpack-1834324_640.jpg' }
+    { id: 21, cat: 'sport', name: 'Гантелі набірні PowerSet 20 кг', price: 1799, old: null, img: '🏋️' },
+    { id: 22, cat: 'sport', name: 'Килимок для йоги FlexMat', price: 599, old: null, img: '🧘' },
+    { id: 23, cat: 'sport', name: 'Футбольний м\'яч ProKick', price: 749, old: 899, img: '⚽' },
+    { id: 24, cat: 'sport', name: 'Спортивний рюкзак TrainBag', price: 899, old: null, img: '🎒' }
 ];
 
 const catMap = Object.fromEntries(CATEGORIES.map(c => [c.id, c]));
@@ -124,7 +124,7 @@ function renderBoard() {
             return `
             <div class="deal-card">
                 <span class="badge">-${off}%</span>
-                <span class="ic">📦</span>
+                <span class="ic" style="font-size:40px;">${d.img}</span>
                 <span class="name">${d.name}</span>
                 <div class="prices">
                     <span class="now">${fmt(d.price)} ₴</span>
@@ -174,9 +174,9 @@ function renderGrid() {
         const inCart = state.cart[p.id] || 0;
         return `
         <div class="card">
-            <div class="thumb" style="background:${c ? c.color : '#eee'}">
+            <div class="thumb" style="background:${c ? c.color : '#eee'};font-size:60px;display:flex;align-items:center;justify-content:center;">
                 ${p.old !== null ? `<span class="sale-flag">Знижка</span>` : ''}
-                <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:40px;\\'>📦</span>'">
+                <span>${p.img}</span>
             </div>
             <div class="cat-label">${c ? c.name : 'Без категорії'}</div>
             <div class="name">${p.name}</div>
@@ -258,8 +258,8 @@ function renderCartBody() {
         const c = catMap[p.cat] || { color: '#eee' };
         return `
         <div class="cart-item">
-            <div class="thumb-sm" style="background:${c.color}">
-                <img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:7px;" onerror="this.style.display='none';this.parentElement.textContent='📦'">
+            <div class="thumb-sm" style="background:${c.color};font-size:30px;display:flex;align-items:center;justify-content:center;">
+                <span>${p.img}</span>
             </div>
             <div class="info">
                 <div class="name">${p.name}</div>
@@ -308,7 +308,7 @@ function openDeliveryModal() {
             const p = PRODUCTS.find(item => item.id === Number(id));
             if (!p) return '';
             return `<div class="item-row">
-                <span>${p.name} × ${qty}</span>
+                <span>${p.img} ${p.name} × ${qty}</span>
                 <span>${fmt(p.price * qty)} ₴</span>
             </div>`;
         }).join('');
@@ -365,7 +365,7 @@ function initDeliveryModal() {
             const deliveryTypeValue = deliveryType ? deliveryType.value : 'courier';
             const orderMessage = `✅ ЗАМОВЛЕННЯ ПІДТВЕРДЖЕНО!\n\n📦 Товари:\n${Object.entries(state.cart).map(([id, qty]) => {
                 const p = PRODUCTS.find(item => item.id === Number(id));
-                return p ? `  • ${p.name} × ${qty} = ${fmt(p.price * qty)} ₴` : '';
+                return p ? `  • ${p.img} ${p.name} × ${qty} = ${fmt(p.price * qty)} ₴` : '';
             }).filter(line => line).join('\n')}\n\n💰 Сума: ${fmt(cartTotal())} ₴\n\n🚚 Доставка:\n  • Місто: ${cityNames[cityValue] || cityValue}\n  • Адреса: ${addressValue}\n  • Індекс: ${postalCodeValue}\n  • Спосіб: ${deliveryNames[deliveryTypeValue] || deliveryTypeValue}\n${comment && comment.value ? `\n📝 Коментар: ${comment.value}` : ''}\n\nДякуємо за покупку! 🎉`;
             showToast('✅ Замовлення оформлено!');
             console.log(orderMessage);
