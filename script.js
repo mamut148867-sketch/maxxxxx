@@ -1,7 +1,3 @@
-// ============================================================
-// 1. ДАНІ
-// ============================================================
-
 const CATEGORIES = [
     { id: 'electronics', name: 'Електроніка', ic: '💻', color: '#DCEDEA' },
     { id: 'appliances', name: 'Побутова техніка', ic: '🧺', color: '#F3E7D6' },
@@ -11,49 +7,47 @@ const CATEGORIES = [
     { id: 'sport', name: 'Спорт і відпочинок', ic: '🏋️', color: '#DEE9F5' }
 ];
 
+// ===== РЕАЛЬНІ ФОТО З БЕЗКОШТОВНОГО CDN =====
+// Використовуємо picsum.photos - спеціальний сервіс для генерації фото
 const PRODUCTS = [
     // ЕЛЕКТРОНІКА
-    { id: 1, cat: 'electronics', name: 'Samsung Galaxy S24 Ultra 512GB', price: 52999, old: 56999, img: '📱' },
-    { id: 2, cat: 'electronics', name: 'iPhone 15 Pro Max 256GB', price: 49999, old: 52999, img: '📱' },
-    { id: 3, cat: 'electronics', name: 'MacBook Air 15" M3', price: 45999, old: null, img: '💻' },
-    { id: 4, cat: 'electronics', name: 'Samsung Galaxy Buds 3 Pro', price: 7999, old: 9999, img: '🎧' },
+    { id: 1, cat: 'electronics', name: 'Samsung Galaxy S24 Ultra 512GB', price: 52999, old: 56999, img: 'https://picsum.photos/seed/samsung/400/400' },
+    { id: 2, cat: 'electronics', name: 'iPhone 15 Pro Max 256GB', price: 49999, old: 52999, img: 'https://picsum.photos/seed/iphone/400/400' },
+    { id: 3, cat: 'electronics', name: 'MacBook Air 15" M3', price: 45999, old: null, img: 'https://picsum.photos/seed/macbook/400/400' },
+    { id: 4, cat: 'electronics', name: 'Samsung Galaxy Buds 3 Pro', price: 7999, old: 9999, img: 'https://picsum.photos/seed/buds/400/400' },
     
     // ПОБУТОВА ТЕХНІКА
-    { id: 5, cat: 'appliances', name: 'Робот-пилосос Xiaomi S10', price: 12999, old: 15999, img: '🤖' },
-    { id: 6, cat: 'appliances', name: 'Холодильник LG InstaView', price: 32999, old: null, img: '🧊' },
-    { id: 7, cat: 'appliances', name: 'Мультиварка Philips HD', price: 4999, old: null, img: '🍲' },
-    { id: 8, cat: 'appliances', name: 'Праска Tefal Ultimate', price: 2999, old: 3999, img: '👕' },
+    { id: 5, cat: 'appliances', name: 'Робот-пилосос Xiaomi S10', price: 12999, old: 15999, img: 'https://picsum.photos/seed/vacuum/400/400' },
+    { id: 6, cat: 'appliances', name: 'Холодильник LG InstaView', price: 32999, old: null, img: 'https://picsum.photos/seed/fridge/400/400' },
+    { id: 7, cat: 'appliances', name: 'Мультиварка Philips HD', price: 4999, old: null, img: 'https://picsum.photos/seed/cooker/400/400' },
+    { id: 8, cat: 'appliances', name: 'Праска Tefal Ultimate', price: 2999, old: 3999, img: 'https://picsum.photos/seed/iron/400/400' },
     
     // МОДА
-    { id: 9, cat: 'fashion', name: 'Куртка North Face Nuptse', price: 12999, old: 15999, img: '🧥' },
-    { id: 10, cat: 'fashion', name: 'Кросівки Nike Air Max 90', price: 5999, old: null, img: '👟' },
-    { id: 11, cat: 'fashion', name: 'Сумка Michael Kors', price: 8999, old: 11999, img: '👜' },
-    { id: 12, cat: 'fashion', name: 'Пальто Zara Premium', price: 4999, old: null, img: '🧥' },
+    { id: 9, cat: 'fashion', name: 'Куртка North Face Nuptse', price: 12999, old: 15999, img: 'https://picsum.photos/seed/jacket/400/400' },
+    { id: 10, cat: 'fashion', name: 'Кросівки Nike Air Max 90', price: 5999, old: null, img: 'https://picsum.photos/seed/shoes/400/400' },
+    { id: 11, cat: 'fashion', name: 'Сумка Michael Kors', price: 8999, old: 11999, img: 'https://picsum.photos/seed/bag/400/400' },
+    { id: 12, cat: 'fashion', name: 'Пальто Zara Premium', price: 4999, old: null, img: 'https://picsum.photos/seed/coat/400/400' },
     
     // ДІМ ТА САД
-    { id: 13, cat: 'home', name: 'Диван IKEA Vimle 3-місний', price: 15999, old: 18999, img: '🛋️' },
-    { id: 14, cat: 'home', name: 'Набір посуду Tefal 12 пр.', price: 3499, old: null, img: '🍳' },
-    { id: 15, cat: 'home', name: 'Світильник IKEA FADO', price: 799, old: null, img: '💡' },
-    { id: 16, cat: 'home', name: 'Штучна ялина Balsam Hill', price: 2499, old: 3499, img: '🎄' },
+    { id: 13, cat: 'home', name: 'Диван IKEA Vimle 3-місний', price: 15999, old: 18999, img: 'https://picsum.photos/seed/sofa/400/400' },
+    { id: 14, cat: 'home', name: 'Набір посуду Tefal 12 пр.', price: 3499, old: null, img: 'https://picsum.photos/seed/dishes/400/400' },
+    { id: 15, cat: 'home', name: 'Світильник IKEA FADO', price: 799, old: null, img: 'https://picsum.photos/seed/lamp/400/400' },
+    { id: 16, cat: 'home', name: 'Штучна ялина Balsam Hill', price: 2499, old: 3499, img: 'https://picsum.photos/seed/tree/400/400' },
     
     // ДИТЯЧІ ТОВАРИ
-    { id: 17, cat: 'kids', name: 'Конструктор BrickCity (500 дет.)', price: 999, old: null, img: '🧱' },
-    { id: 18, cat: 'kids', name: 'Дитячий велосипед KidRide 16"', price: 3299, old: 3799, img: '🚲' },
-    { id: 19, cat: 'kids', name: 'М\'яка іграшка Ведмедик Тедді', price: 449, old: null, img: '🧸' },
-    { id: 20, cat: 'kids', name: 'Пазл «Мандрівка світом» 1000 дет.', price: 349, old: null, img: '🧩' },
+    { id: 17, cat: 'kids', name: 'Конструктор BrickCity (500 дет.)', price: 999, old: null, img: 'https://picsum.photos/seed/lego/400/400' },
+    { id: 18, cat: 'kids', name: 'Дитячий велосипед KidRide 16"', price: 3299, old: 3799, img: 'https://picsum.photos/seed/bike/400/400' },
+    { id: 19, cat: 'kids', name: 'М\'яка іграшка Ведмедик Тедді', price: 449, old: null, img: 'https://picsum.photos/seed/bear/400/400' },
+    { id: 20, cat: 'kids', name: 'Пазл «Мандрівка світом» 1000 дет.', price: 349, old: null, img: 'https://picsum.photos/seed/puzzle/400/400' },
     
     // СПОРТ
-    { id: 21, cat: 'sport', name: 'Гантелі набірні PowerSet 20 кг', price: 1799, old: null, img: '🏋️' },
-    { id: 22, cat: 'sport', name: 'Килимок для йоги FlexMat', price: 599, old: null, img: '🧘' },
-    { id: 23, cat: 'sport', name: 'Футбольний м\'яч ProKick', price: 749, old: 899, img: '⚽' },
-    { id: 24, cat: 'sport', name: 'Спортивний рюкзак TrainBag', price: 899, old: null, img: '🎒' }
+    { id: 21, cat: 'sport', name: 'Гантелі набірні PowerSet 20 кг', price: 1799, old: null, img: 'https://picsum.photos/seed/dumbbell/400/400' },
+    { id: 22, cat: 'sport', name: 'Килимок для йоги FlexMat', price: 599, old: null, img: 'https://picsum.photos/seed/yoga/400/400' },
+    { id: 23, cat: 'sport', name: 'Футбольний м\'яч ProKick', price: 749, old: 899, img: 'https://picsum.photos/seed/ball/400/400' },
+    { id: 24, cat: 'sport', name: 'Спортивний рюкзак TrainBag', price: 899, old: null, img: 'https://picsum.photos/seed/backpack/400/400' }
 ];
 
 const catMap = Object.fromEntries(CATEGORIES.map(c => [c.id, c]));
-
-// ============================================================
-// 2. СТАН
-// ============================================================
 
 let state = {
     activeCat: 'all',
@@ -64,10 +58,6 @@ let state = {
     sort: 'default',
     cart: {}
 };
-
-// ============================================================
-// 3. ДОПОМІЖНІ ФУНКЦІЇ
-// ============================================================
 
 function fmt(n) {
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
@@ -81,10 +71,6 @@ function showToast(msg) {
     clearTimeout(window.toastTimer);
     window.toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
 }
-
-// ============================================================
-// 4. РЕНДЕР: КАТЕГОРІЇ
-// ============================================================
 
 function renderCatTabs() {
     const wrap = document.getElementById('catTabs');
@@ -105,10 +91,6 @@ function renderCatTabs() {
         });
     });
 }
-
-// ============================================================
-// 5. РЕНДЕР: ФІЛЬТРИ
-// ============================================================
 
 function renderFilterChecks() {
     const wrap = document.getElementById('catChecks');
@@ -133,10 +115,6 @@ function renderFilterChecks() {
     });
 }
 
-// ============================================================
-// 6. РЕНДЕР: БАНЕР
-// ============================================================
-
 function renderBoard() {
     const board = document.getElementById('board');
     if (!board) return;
@@ -156,7 +134,7 @@ function renderBoard() {
             return `
             <div class="deal-card">
                 <span class="badge">-${off}%</span>
-                <span style="font-size:40px;">${d.img}</span>
+                <img src="${d.img}" alt="${d.name}" style="width:60px;height:60px;border-radius:10px;object-fit:cover;">
                 <span class="name">${d.name}</span>
                 <div class="prices">
                     <span class="now">${fmt(d.price)} ₴</span>
@@ -166,10 +144,6 @@ function renderBoard() {
         }).join('')}
     `;
 }
-
-// ============================================================
-// 7. РЕНДЕР: ТОВАРИ (ГРИД)
-// ============================================================
 
 function getFiltered() {
     let list = PRODUCTS.slice();
@@ -210,9 +184,9 @@ function renderGrid() {
         const inCart = state.cart[p.id] || 0;
         return `
         <div class="card">
-            <div class="thumb" style="background:${c ? c.color : '#eee'};font-size:60px;display:flex;align-items:center;justify-content:center;">
+            <div class="thumb" style="background:${c ? c.color : '#eee'};display:flex;align-items:center;justify-content:center;overflow:hidden;">
                 ${p.old !== null ? `<span class="sale-flag">Знижка</span>` : ''}
-                ${p.img}
+                <img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:50px;\\'>📦</span>'">
             </div>
             <div class="cat-label">${c ? c.name : 'Без категорії'}</div>
             <div class="name">${p.name}</div>
@@ -235,10 +209,6 @@ function renderGrid() {
         });
     });
 }
-
-// ============================================================
-// 8. КОШИК
-// ============================================================
 
 function addToCart(id) {
     state.cart[id] = (state.cart[id] || 0) + 1;
@@ -298,8 +268,8 @@ function renderCartBody() {
         const c = catMap[p.cat] || { color: '#eee' };
         return `
         <div class="cart-item">
-            <div class="thumb-sm" style="background:${c.color};font-size:30px;display:flex;align-items:center;justify-content:center;">
-                ${p.img}
+            <div class="thumb-sm" style="background:${c.color};display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                <img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.textContent='📦'">
             </div>
             <div class="info">
                 <div class="name">${p.name}</div>
@@ -327,10 +297,6 @@ function renderCartBody() {
     });
 }
 
-// ============================================================
-// 9. ДОСТАВКА (МОДАЛЬНЕ ВІКНО)
-// ============================================================
-
 function openDeliveryModal() {
     const overlay = document.getElementById('deliveryOverlay');
     if (!overlay) return;
@@ -341,7 +307,7 @@ function openDeliveryModal() {
             const p = PRODUCTS.find(item => item.id === Number(id));
             if (!p) return '';
             return `<div class="item-row">
-                <span>${p.img} ${p.name} × ${qty}</span>
+                <span>${p.name} × ${qty}</span>
                 <span>${fmt(p.price * qty)} ₴</span>
             </div>`;
         }).join('');
@@ -398,9 +364,10 @@ function initDeliveryModal() {
             const deliveryTypeValue = deliveryType ? deliveryType.value : 'courier';
             const orderMessage = `✅ ЗАМОВЛЕННЯ ПІДТВЕРДЖЕНО!\n\n📦 Товари:\n${Object.entries(state.cart).map(([id, qty]) => {
                 const p = PRODUCTS.find(item => item.id === Number(id));
-                return p ? `  • ${p.img} ${p.name} × ${qty} = ${fmt(p.price * qty)} ₴` : '';
+                return p ? `  • ${p.name} × ${qty} = ${fmt(p.price * qty)} ₴` : '';
             }).filter(line => line).join('\n')}\n\n💰 Сума: ${fmt(cartTotal())} ₴\n\n🚚 Доставка:\n  • Місто: ${cityNames[cityValue] || cityValue}\n  • Адреса: ${addressValue}\n  • Індекс: ${postalCodeValue}\n  • Спосіб: ${deliveryNames[deliveryTypeValue] || deliveryTypeValue}\n${comment && comment.value ? `\n📝 Коментар: ${comment.value}` : ''}\n\nДякуємо за покупку! 🎉`;
             showToast('✅ Замовлення оформлено!');
+            console.log(orderMessage);
             alert(orderMessage);
             state.cart = {};
             renderCartCount();
@@ -411,10 +378,6 @@ function initDeliveryModal() {
         });
     }
 }
-
-// ============================================================
-// 10. ПІДКЛЮЧЕННЯ ПОДІЙ
-// ============================================================
 
 document.addEventListener('DOMContentLoaded', function() {
     const searchForm = document.getElementById('searchForm');
@@ -529,10 +492,6 @@ document.addEventListener('DOMContentLoaded', function() {
     renderCartBody();
     renderGrid();
 });
-
-// ============================================================
-// 11. ЗАПУСК
-// ============================================================
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
