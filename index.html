@@ -19,7 +19,7 @@
                 <button type="submit">Знайти</button>
             </form>
             <div class="header-actions">
-                <button class="cart-btn" id="openCart">
+                <button class="cart-btn" id="openCart" type="button">
                     Кошик
                     <span class="cart-count" id="cartCount">0</span>
                 </button>
@@ -35,7 +35,7 @@
     </div>
 
     <div class="layout">
-        <button class="filters-toggle" id="filtersToggle" aria-expanded="false">
+        <button class="filters-toggle" id="filtersToggle" type="button" aria-expanded="false">
             <span>Фільтри та сортування</span>
             <span class="chev">▾</span>
         </button>
@@ -53,7 +53,7 @@
                     <input type="checkbox" id="onlySale"> Тільки зі знижкою
                 </label>
             </div>
-            <button class="reset-btn" id="resetFilters">Скинути фільтри</button>
+            <button class="reset-btn" id="resetFilters" type="button">Скинути фільтри</button>
         </aside>
         <main>
             <div class="results-bar">
@@ -75,7 +75,7 @@
     <div class="drawer" id="drawer">
         <div class="drawer-head">
             <h3>Ваш кошик</h3>
-            <button id="closeCart">×</button>
+            <button id="closeCart" type="button">×</button>
         </div>
         <div class="drawer-body" id="cartBody"></div>
         <div class="drawer-foot">
@@ -83,7 +83,7 @@
                 <span class="label">Товари</span>
                 <span class="sum" id="cartSubtotal">0 ₴</span>
             </div>
-            <button class="checkout-btn" id="checkoutBtn">Оформити замовлення</button>
+            <button class="checkout-btn" id="checkoutBtn" type="button" disabled>Оформити замовлення</button>
         </div>
     </div>
 
@@ -91,7 +91,7 @@
         <div class="delivery-modal">
             <div class="delivery-header">
                 <h3>Оформлення замовлення</h3>
-                <button class="delivery-close" id="deliveryClose">×</button>
+                <button class="delivery-close" id="deliveryClose" type="button">×</button>
             </div>
             <div class="delivery-body">
                 <form id="deliveryForm">
@@ -117,7 +117,7 @@
                     </div>
                     <div class="delivery-field">
                         <label for="postalCode">Поштовий індекс</label>
-                        <input type="text" id="postalCode" placeholder="01001" required pattern="[0-9]{5}" maxlength="5">
+                        <input type="text" id="postalCode" placeholder="01001" required pattern="[0-9]{5}" maxlength="5" inputmode="numeric">
                     </div>
                     <div class="delivery-options">
                         <label class="delivery-option">

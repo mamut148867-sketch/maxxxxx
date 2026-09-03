@@ -54,8 +54,10 @@ let state = {
     priceMax: 60000,
     onlySale: false,
     sort: 'default',
-    cart: {}
+    cart: {} // { productId: qty }
 };
+
+/* ===================== HELPERS ===================== */
 
 function fmt(n) {
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
@@ -70,13 +72,32 @@ function showToast(msg) {
     window.toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
 }
 
+function getCartCount() {
+    return Object.values(state.cart).reduce((sum, qty) => sum + qty, 0);
+}
+
+function getCartItems() {
+    return Object.entries(state.cart)
+        .map(([id, qty]) => {
+            const product = PRODUCTS.find(p => p.id === Number(id));
+            return product ? { product, qty } : null;
+        })
+        .filter(Boolean);
+}
+
+function getCartTotal() {
+    return getCartItems().reduce((sum, { product, qty }) => sum + product.price * qty, 0);
+}
+
+/* ===================== CATEGORY TABS / FILTERS ===================== */
+
 function renderCatTabs() {
     const wrap = document.getElementById('catTabs');
     if (!wrap) return;
 
     const all = [{ id: 'all', name: 'Усі товари' }, ...CATEGORIES];
     wrap.innerHTML = all.map(c => `
-        <button class="cat-tab ${state.activeCat === c.id ? 'active' : ''}" data-cat="${c.id}">
+        <button class="cat-tab ${state.activeCat === c.id ? 'active' : ''}" data-cat="${c.id}" type="button">
             ${c.name}
         </button>
     `).join('');
@@ -117,6 +138,8 @@ function renderFilterChecks() {
     });
 }
 
+/* ===================== HERO BOARD ===================== */
+
 function renderBoard() {
     const board = document.getElementById('board');
     if (!board) return;
@@ -149,6 +172,8 @@ function renderBoard() {
         }).join('')}
     `;
 }
+
+/* ===================== PRODUCT GRID ===================== */
 
 function getFiltered() {
     let list = PRODUCTS.slice();
@@ -206,8 +231,8 @@ function renderGrid() {
         <div class="card">
             <div class="thumb" style="background:${c ? c.color : '#eee'}">
                 ${p.old !== null ? `<span class="sale-flag">Знижка</span>` : ''}
-                <img src="${p.img}" 
-                     alt="${p.name}" 
+                <img src="${p.img}"
+                     alt="${p.name}"
                      loading="lazy"
                      onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Crect fill=%22%23e8e8e8%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23999%22 font-family=%22sans-serif%22 font-size=%2218%22%3EНемає фото%3C/text%3E%3C/svg%3E';">
             </div>
@@ -219,7 +244,7 @@ function renderGrid() {
                     ${p.old !== null ? `<span class="old">${fmt(p.old)} ₴</span>` : ''}
                 </div>
             </div>
-            <button class="add-btn ${inCart > 0 ? 'added' : ''}" data-id="${p.id}">
+            <button class="add-btn ${inCart > 0 ? 'added' : ''}" data-id="${p.id}" type="button">
                 ${inCart > 0 ? `У кошику (${inCart})` : 'Додати в кошик'}
             </button>
         </div>`;
@@ -233,6 +258,8 @@ function renderGrid() {
         });
     });
 }
+
+/* ===================== CART LOGIC ===================== */
 
 function addToCart(id) {
     state.cart[id] = (state.cart[id] || 0) + 1;
@@ -248,5 +275,249 @@ function changeQty(id, delta) {
     if (state.cart[id] <= 0) delete state.cart[id];
     renderCartCount();
     renderCartBody();
-    renderGrid();          // ← лучше ещё и сетку обновить
+    renderGrid();
 }
+
+function removeFromCart(id) {
+    delete state.cart[id];
+    renderCartCount();
+    renderCartBody();
+    renderGrid();
+}
+
+function renderCartCount() {
+    const el = document.getElementById('cartCount');
+    if (el) el.textContent = getCartCount();
+}
+
+function renderCartBody() {
+    const body = document.getElementById('cartBody');
+    const subtotalEl = document.getElementById('cartSubtotal');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    if (!body) return;
+
+    const items = getCartItems();
+
+    if (items.length === 0) {
+        body.innerHTML = `<div class="cart-empty">Кошик порожній</div>`;
+        if (subtotalEl) subtotalEl.textContent = '0 ₴';
+        if (checkoutBtn) checkoutBtn.disabled = true;
+        return;
+    }
+
+    body.innerHTML = items.map(({ product, qty }) => `
+        <div class="cart-item" data-id="${product.id}">
+            <div class="thumb-sm" style="background:${catMap[product.cat] ? catMap[product.cat].color : '#eee'}">
+                <img src="${product.img}"
+                     alt="${product.name}"
+                     onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22%3E%3Crect fill=%22%23e8e8e8%22 width=%2260%22 height=%2260%22/%3E%3C/svg%3E';">
+            </div>
+            <div class="info">
+                <div class="name">${product.name}</div>
+                <div class="qty-row">
+                    <button class="qty-minus" data-id="${product.id}" type="button">−</button>
+                    <span class="qty">${qty}</span>
+                    <button class="qty-plus" data-id="${product.id}" type="button">+</button>
+                    <span class="line-price">${fmt(product.price * qty)} ₴</span>
+                    <button class="remove-btn" data-id="${product.id}" type="button">Видалити</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+
+    if (subtotalEl) subtotalEl.textContent = `${fmt(getCartTotal())} ₴`;
+    if (checkoutBtn) checkoutBtn.disabled = false;
+
+    body.querySelectorAll('.qty-minus').forEach(btn => {
+        btn.addEventListener('click', function () {
+            changeQty(Number(this.dataset.id), -1);
+        });
+    });
+    body.querySelectorAll('.qty-plus').forEach(btn => {
+        btn.addEventListener('click', function () {
+            changeQty(Number(this.dataset.id), 1);
+        });
+    });
+    body.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            removeFromCart(Number(this.dataset.id));
+        });
+    });
+}
+
+function openCartDrawer() {
+    document.getElementById('drawer').classList.add('open');
+    document.getElementById('overlay').classList.add('open');
+}
+
+function closeCartDrawer() {
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+}
+
+/* ===================== DELIVERY / CHECKOUT MODAL ===================== */
+
+function renderDeliverySummary() {
+    const itemsWrap = document.getElementById('deliveryItems');
+    const totalEl = document.getElementById('deliveryTotalPrice');
+    if (!itemsWrap) return;
+
+    const items = getCartItems();
+
+    itemsWrap.innerHTML = items.map(({ product, qty }) => `
+        <div class="item-row">
+            <span>${product.name} × ${qty}</span>
+            <span>${fmt(product.price * qty)} ₴</span>
+        </div>
+    `).join('');
+
+    if (totalEl) totalEl.textContent = `${fmt(getCartTotal())} ₴`;
+}
+
+function openDeliveryModal() {
+    if (getCartCount() === 0) {
+        showToast('Кошик порожній');
+        return;
+    }
+    renderDeliverySummary();
+    document.getElementById('deliveryOverlay').classList.add('open');
+    closeCartDrawer();
+}
+
+function closeDeliveryModal() {
+    document.getElementById('deliveryOverlay').classList.remove('open');
+}
+
+function handleDeliverySubmit(e) {
+    e.preventDefault();
+
+    const city = document.getElementById('citySelect').value;
+    const street = document.getElementById('streetAddress').value.trim();
+    const postal = document.getElementById('postalCode').value.trim();
+
+    if (!city || !street || !/^\d{5}$/.test(postal)) {
+        showToast('Перевірте поля доставки');
+        return;
+    }
+
+    // "Place" the order
+    state.cart = {};
+    renderCartCount();
+    renderCartBody();
+    renderGrid();
+    closeDeliveryModal();
+    document.getElementById('deliveryForm').reset();
+    showToast('Замовлення оформлено! Дякуємо 🎉');
+}
+
+/* ===================== FILTERS: PRICE / SALE / SORT / RESET ===================== */
+
+function initFilterControls() {
+    const priceMax = document.getElementById('priceMax');
+    const priceMaxVal = document.getElementById('priceMaxVal');
+    if (priceMax) {
+        priceMax.addEventListener('input', function () {
+            state.priceMax = Number(this.value);
+            if (priceMaxVal) priceMaxVal.textContent = fmt(state.priceMax);
+            renderGrid();
+        });
+    }
+
+    const onlySale = document.getElementById('onlySale');
+    if (onlySale) {
+        onlySale.addEventListener('change', function () {
+            state.onlySale = this.checked;
+            renderGrid();
+        });
+    }
+
+    const sort = document.getElementById('sort');
+    if (sort) {
+        sort.addEventListener('change', function () {
+            state.sort = this.value;
+            renderGrid();
+        });
+    }
+
+    const resetBtn = document.getElementById('resetFilters');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function () {
+            state.activeCat = 'all';
+            state.checkedCats.clear();
+            state.priceMax = 60000;
+            state.onlySale = false;
+            state.sort = 'default';
+            state.search = '';
+
+            document.getElementById('searchInput').value = '';
+            document.getElementById('priceMax').value = 60000;
+            document.getElementById('priceMaxVal').textContent = '60000';
+            document.getElementById('onlySale').checked = false;
+            document.getElementById('sort').value = 'default';
+
+            renderFilterChecks();
+            renderCatTabs();
+            renderGrid();
+        });
+    }
+
+    const filtersToggle = document.getElementById('filtersToggle');
+    const filtersPanel = document.getElementById('filtersPanel');
+    if (filtersToggle && filtersPanel) {
+        filtersToggle.addEventListener('click', function () {
+            const isOpen = filtersPanel.classList.toggle('open');
+            this.classList.toggle('open', isOpen);
+            this.setAttribute('aria-expanded', String(isOpen));
+        });
+    }
+}
+
+/* ===================== SEARCH ===================== */
+
+function initSearch() {
+    const form = document.getElementById('searchForm');
+    const input = document.getElementById('searchInput');
+    if (!form || !input) return;
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        state.search = input.value;
+        renderGrid();
+    });
+
+    input.addEventListener('input', function () {
+        state.search = this.value;
+        renderGrid();
+    });
+}
+
+/* ===================== CART DRAWER / DELIVERY WIRING ===================== */
+
+function initCartAndDelivery() {
+    document.getElementById('openCart').addEventListener('click', openCartDrawer);
+    document.getElementById('closeCart').addEventListener('click', closeCartDrawer);
+    document.getElementById('overlay').addEventListener('click', closeCartDrawer);
+
+    document.getElementById('checkoutBtn').addEventListener('click', openDeliveryModal);
+    document.getElementById('deliveryClose').addEventListener('click', closeDeliveryModal);
+    document.getElementById('deliveryOverlay').addEventListener('click', function (e) {
+        if (e.target === this) closeDeliveryModal();
+    });
+    document.getElementById('deliveryForm').addEventListener('submit', handleDeliverySubmit);
+}
+
+/* ===================== INIT ===================== */
+
+function init() {
+    renderBoard();
+    renderCatTabs();
+    renderFilterChecks();
+    renderGrid();
+    renderCartCount();
+    renderCartBody();
+    initFilterControls();
+    initSearch();
+    initCartAndDelivery();
+}
+
+document.addEventListener('DOMContentLoaded', init);
