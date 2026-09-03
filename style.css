@@ -388,7 +388,7 @@ select#sort {
 }
 
 .card .thumb {
-    position: relative;          /* ← важно */
+    position: relative;
     aspect-ratio: 1/1;
     border-radius: 8px;
     display: flex;
