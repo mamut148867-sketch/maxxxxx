@@ -991,540 +991,520 @@
 
     <div class="toast" id="toast"></div>
 
-    <script>
-        const CATEGORIES = [
-            { id: 'electronics', name: '📱 Електроніка', color: '#DCEDEA' },
-            { id: 'appliances', name: '🔌 Побутова техніка', color: '#F3E7D6' },
-            { id: 'fashion', name: '👗 Мода', color: '#F6DED6' },
-            { id: 'home', name: '🏠 Дім і сад', color: '#E4EFDA' },
-            { id: 'kids', name: '🧸 Дитячі товари', color: '#F7E4EE' },
-            { id: 'sport', name: '⚽ Спорт', color: '#DEE9F5' },
-            { id: 'beauty', name: '💄 Краса та здоров\'я', color: '#F5E6E8' },
-            { id: 'books', name: '📚 Книги', color: '#E8E0D8' },
-            { id: 'auto', name: '🚗 Автотовари', color: '#D6E6F0' },
-            { id: 'office', name: '🖥️ Офіс', color: '#E8EDDF' }
-        ];
-
-        const PRODUCTS = [
-            { id: 1, cat: 'electronics', name: 'Samsung Galaxy S24 Ultra 512GB', price: 52999, old: 56999, img: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop' },
-            { id: 2, cat: 'electronics', name: 'iPhone 15 Pro Max 256GB', price: 49999, old: 52999, img: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&h=400&fit=crop' },
-            { id: 3, cat: 'electronics', name: 'MacBook Air 15" M3', price: 45999, old: null, img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop' },
-            { id: 4, cat: 'electronics', name: 'Samsung Galaxy Buds 3 Pro', price: 7999, old: 9999, img: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=400&fit=crop' },
-            { id: 5, cat: 'electronics', name: 'Apple Watch Ultra 2', price: 27999, old: null, img: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&h=400&fit=crop' },
-            { id: 6, cat: 'electronics', name: 'Dyson V15 Detect', price: 22999, old: 26999, img: 'https://images.unsplash.com/photo-1558317374-687fb8cf9f7d?w=400&h=400&fit=crop' },
-
-            { id: 7, cat: 'appliances', name: 'Робот-пилосос Xiaomi S10', price: 12999, old: 15999, img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop' },
-            { id: 8, cat: 'appliances', name: 'Холодильник LG InstaView', price: 32999, old: null, img: 'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=400&h=400&fit=crop' },
-            { id: 9, cat: 'appliances', name: 'Мультиварка Philips HD', price: 4999, old: 5999, img: 'https://i.postimg.cc/RNjTbB3X/images-3.jpg' },
-            { id: 10, cat: 'appliances', name: 'Праска Tefal Ultimate', price: 2999, old: 3999, img: 'https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=400&h=400&fit=crop' },
-            { id: 11, cat: 'appliances', name: 'Мікрохвильова піч Samsung', price: 6999, old: null, img: 'https://images.unsplash.com/photo-1574267432553-4b4628081f31?w=400&h=400&fit=crop' },
-            { id: 12, cat: 'appliances', name: 'Посудомийна машина Bosch', price: 24999, old: 28999, img: 'https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=400&h=400&fit=crop' },
-
-            { id: 13, cat: 'fashion', name: 'Куртка North Face Nuptse', price: 12999, old: 15999, img: 'https://i.postimg.cc/Lh5B9XL0/images-2.jpg' },
-            { id: 14, cat: 'fashion', name: 'Кросівки Nike Air Max 90', price: 5999, old: null, img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop' },
-            { id: 15, cat: 'fashion', name: 'Сумка Michael Kors', price: 8999, old: 11999, img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop' },
-            { id: 16, cat: 'fashion', name: 'Пальто Zara Premium', price: 4999, old: null, img: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&h=400&fit=crop' },
-            { id: 17, cat: 'fashion', name: 'Джинси Levi\'s 501', price: 3499, old: 3999, img: 'https://images.unsplash.com/photo-1582552938357-32b78df5668c?w=400&h=400&fit=crop' },
-            { id: 18, cat: 'fashion', name: 'Кросівки Adidas Ultraboost', price: 7999, old: null, img: 'https://images.unsplash.com/photo-1518002171953-a080ee817e1f?w=400&h=400&fit=crop' },
-
-            { id: 19, cat: 'home', name: 'Диван IKEA Vimle 3-місний', price: 15999, old: 18999, img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=400&fit=crop' },
-            { id: 20, cat: 'home', name: 'Набір посуду Tefal 12 пр.', price: 3499, old: null, img: 'https://i.postimg.cc/VLkFB7pD/Nabir-posudu-Tefal-12-pr.jpg' },
-            { id: 21, cat: 'home', name: 'Світильник IKEA FADO', price: 799, old: null, img: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&h=400&fit=crop' },
-            { id: 22, cat: 'home', name: 'Штучна ялина Balsam Hill', price: 2499, old: 3499, img: 'https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=400&h=400&fit=crop' },
-            { id: 23, cat: 'home', name: 'Садова гойдалка Palermo', price: 11999, old: null, img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=400&fit=crop' },
-            { id: 24, cat: 'home', name: 'Комплект постільної білизни', price: 2499, old: 2999, img: 'https://images.unsplash.com/photo-1584100936590-c7294b8a5fb8?w=400&h=400&fit=crop' },
-
-            { id: 25, cat: 'kids', name: 'Конструктор BrickCity 500 дет.', price: 999, old: null, img: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400&h=400&fit=crop' },
-            { id: 26, cat: 'kids', name: 'Дитячий велосипед KidRide 16"', price: 3299, old: 3799, img: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=400&h=400&fit=crop' },
-            { id: 27, cat: 'kids', name: 'М\'яка іграшка Ведмедик Тедді', price: 449, old: null, img: 'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=400&h=400&fit=crop' },
-            { id: 28, cat: 'kids', name: 'Пазл «Мандрівка світом» 1000 дет.', price: 349, old: null, img: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=400&h=400&fit=crop' },
-            { id: 29, cat: 'kids', name: 'Розвиваючий столик BabyGo', price: 1499, old: 1799, img: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400&h=400&fit=crop' },
-            { id: 30, cat: 'kids', name: 'Дитячий набір для творчості', price: 599, old: null, img: 'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=400&h=400&fit=crop' },
-
-            { id: 31, cat: 'sport', name: 'Гантелі набірні PowerSet 20 кг', price: 1799, old: null, img: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&h=400&fit=crop' },
-            { id: 32, cat: 'sport', name: 'Килимок для йоги FlexMat', price: 599, old: null, img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=400&fit=crop' },
-            { id: 33, cat: 'sport', name: 'Футбольний м\'яч ProKick', price: 749, old: 899, img: 'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=400&h=400&fit=crop' },
-            { id: 34, cat: 'sport', name: 'Спортивний рюкзак TrainBag', price: 899, old: null, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop' },
-            { id: 35, cat: 'sport', name: 'Велотренажер BodyFit Pro', price: 7999, old: 9999, img: 'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=400&h=400&fit=crop' },
-            { id: 36, cat: 'sport', name: 'Лижі Atomic Redster', price: 14999, old: null, img: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=400&fit=crop' },
-
-            { id: 37, cat: 'beauty', name: 'Набір косметики Clinique', price: 2499, old: 2999, img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop' },
-            { id: 38, cat: 'beauty', name: 'Парфум Chanel No.5', price: 4999, old: null, img: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop' },
-            { id: 39, cat: 'beauty', name: 'Масажер для обличчя', price: 899, old: 1299, img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop' },
-            { id: 40, cat: 'beauty', name: 'Набір для манікюру', price: 699, old: null, img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop' },
-            { id: 41, cat: 'beauty', name: 'Електрична зубна щітка Oral-B', price: 1999, old: 2499, img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop' },
-
-            { id: 42, cat: 'books', name: 'Гаррі Поттер і філософський камінь', price: 349, old: null, img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=400&fit=crop' },
-            { id: 43, cat: 'books', name: 'Кобзар - Тарас Шевченко', price: 299, old: 399, img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=400&fit=crop' },
-            { id: 44, cat: 'books', name: 'Наука дбати про себе', price: 499, old: null, img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=400&fit=crop' },
-            { id: 45, cat: 'books', name: 'Енциклопедія світової історії', price: 899, old: 1099, img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=400&fit=crop' },
-
-            { id: 46, cat: 'auto', name: 'Чохли для сидінь авто', price: 1499, old: null, img: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400&h=400&fit=crop' },
-            { id: 47, cat: 'auto', name: 'Відеореєстратор BlackVue', price: 3999, old: 4999, img: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400&h=400&fit=crop' },
-            { id: 48, cat: 'auto', name: 'Набір інструментів авто', price: 2499, old: null, img: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400&h=400&fit=crop' },
-            { id: 49, cat: 'auto', name: 'Автомобільний пилосос', price: 899, old: 1199, img: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400&h=400&fit=crop' },
-
-            { id: 50, cat: 'office', name: 'Офісне крісло ErgoMax', price: 5999, old: null, img: 'https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=400&h=400&fit=crop' },
-            { id: 51, cat: 'office', name: 'Письмовий стіл Regal', price: 3999, old: 4999, img: 'https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=400&h=400&fit=crop' },
-            { id: 52, cat: 'office', name: 'Набір канцтоварів Deluxe', price: 499, old: null, img: 'https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=400&h=400&fit=crop' },
-            { id: 53, cat: 'office', name: 'Принтер HP LaserJet', price: 7999, old: 9999, img: 'https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=400&h=400&fit=crop' }
-        ];
-
-        const catMap = Object.fromEntries(CATEGORIES.map(c => [c.id, c]));
-
-        let state = {
-            activeCat: 'all',
-            checkedCats: new Set(),
-            search: '',
-            priceMax: 60000,
-            onlySale: false,
-            sort: 'default',
-            cart: {}
-        };
-
-        function fmt(n) {
-            return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-        }
-
-        function showToast(msg) {
-            const t = document.getElementById('toast');
-            if (!t) return;
-            t.textContent = msg;
-            t.classList.add('show');
-            clearTimeout(window.toastTimer);
-            window.toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
-        }
-
-        function getCartCount() {
-            return Object.values(state.cart).reduce((sum, qty) => sum + qty, 0);
-        }
-
-        function getCartItems() {
-            return Object.entries(state.cart)
-                .map(([id, qty]) => {
-                    const product = PRODUCTS.find(p => p.id === Number(id));
-                    return product ? { product, qty } : null;
-                })
-                .filter(Boolean);
-        }
-
-        function getCartTotal() {
-            return getCartItems().reduce((sum, { product, qty }) => sum + product.price * qty, 0);
-        }
-
-        function renderCatTabs() {
-            const wrap = document.getElementById('catTabs');
-            if (!wrap) return;
-
-            const all = [{ id: 'all', name: 'Усі товари' }, ...CATEGORIES];
-            wrap.innerHTML = all.map(c => `
-                <button class="cat-tab ${state.activeCat === c.id ? 'active' : ''}" data-cat="${c.id}" type="button">
-                    ${c.name}
-                </button>
-            `).join('');
-
-            wrap.querySelectorAll('.cat-tab').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    state.activeCat = this.dataset.cat;
-                    state.checkedCats.clear();
-                    renderFilterChecks();
-                    renderCatTabs();
-                    renderGrid();
-                });
-            });
-        }
-
-        function renderFilterChecks() {
-            const wrap = document.getElementById('catChecks');
-            if (!wrap) return;
-
-            wrap.innerHTML = CATEGORIES.map(c => `
-                <label class="check-row">
-                    <input type="checkbox" value="${c.id}" ${state.checkedCats.has(c.id) ? 'checked' : ''}>
-                    ${c.name}
-                </label>
-            `).join('');
-
-            wrap.querySelectorAll('input').forEach(inp => {
-                inp.addEventListener('change', function () {
-                    if (this.checked) {
-                        state.checkedCats.add(this.value);
-                        state.activeCat = 'all';
-                    } else {
-                        state.checkedCats.delete(this.value);
-                    }
-                    renderCatTabs();
-                    renderGrid();
-                });
-            });
-        }
-
-        function renderBoard() {
-            const board = document.getElementById('board');
-            if (!board) return;
-
-            const deals = PRODUCTS.filter(p => p.old !== null).slice(0, 4);
-
-            if (deals.length === 0) {
-                board.innerHTML = `<div class="board-head"><h1>Спеціальні пропозиції</h1></div>`;
-                return;
-            }
-
-            board.innerHTML = `
-                <div class="board-head">
-                    <div class="eyebrow">// сьогоднішні знижки</div>
-                    <h1>Торгуємось чесно</h1>
-                    <p>Найкращі пропозиції на сьогодні</p>
-                </div>
-                ${deals.map(d => {
-                    const off = Math.round(100 - (d.price / d.old * 100));
-                    return `
-                    <div class="deal-card">
-                        <span class="badge">-${off}%</span>
-                        <img src="${d.img}" alt="${d.name}" width="60" height="60" style="border-radius:10px;object-fit:cover;">
-                        <span class="name">${d.name}</span>
-                        <div class="prices">
-                            <span class="now">${fmt(d.price)} ₴</span>
-                            <span class="old">${fmt(d.old)} ₴</span>
-                        </div>
-                    </div>`;
-                }).join('')}
-            `;
-        }
-
-        function getFiltered() {
-            let list = PRODUCTS.slice();
-
-            if (state.checkedCats.size > 0) {
-                list = list.filter(p => state.checkedCats.has(p.cat));
-            } else if (state.activeCat !== 'all') {
-                list = list.filter(p => p.cat === state.activeCat);
-            }
-
-            if (state.search.trim()) {
-                const q = state.search.trim().toLowerCase();
-                list = list.filter(p => p.name.toLowerCase().includes(q));
-            }
-
-            list = list.filter(p => p.price <= state.priceMax);
-
-            if (state.onlySale) {
-                list = list.filter(p => p.old !== null);
-            }
-
-            switch (state.sort) {
-                case 'price-asc':
-                    list.sort((a, b) => a.price - b.price);
-                    break;
-                case 'price-desc':
-                    list.sort((a, b) => b.price - a.price);
-                    break;
-                case 'name':
-                    list.sort((a, b) => a.name.localeCompare(b.name, 'uk'));
-                    break;
-            }
-
-            return list;
-        }
-
-        function renderGrid() {
-            const grid = document.getElementById('grid');
-            if (!grid) return;
-
-            const list = getFiltered();
-            const resultCount = document.getElementById('resultCount');
-            if (resultCount) resultCount.textContent = `(${list.length})`;
-
-            if (list.length === 0) {
-                grid.innerHTML = `<div class="empty-state">Нічого не знайдено</div>`;
-                return;
-            }
-
-            grid.innerHTML = list.map(p => {
-                const c = catMap[p.cat];
-                const inCart = state.cart[p.id] || 0;
-
-                return `
-                <div class="card">
-                    <div class="thumb" style="background:${c ? c.color : '#eee'}">
-                        ${p.old !== null ? `<span class="sale-flag">Знижка</span>` : ''}
-                        <img src="${p.img}"
-                             alt="${p.name}"
-                             loading="lazy"
-                             onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Crect fill=%22%23e8e8e8%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23999%22 font-family=%22sans-serif%22 font-size=%2218%22%3EНемає фото%3C/text%3E%3C/svg%3E';">
-                    </div>
-                    <div class="cat-label">${c ? c.name : ''}</div>
-                    <div class="name">${p.name}</div>
-                    <div class="tag-row">
-                        <div class="price-tag">
-                            <span class="now">${fmt(p.price)} ₴</span>
-                            ${p.old !== null ? `<span class="old">${fmt(p.old)} ₴</span>` : ''}
-                        </div>
-                    </div>
-                    <button class="add-btn ${inCart > 0 ? 'added' : ''}" data-id="${p.id}" type="button">
-                        ${inCart > 0 ? `У кошику (${inCart})` : 'Додати в кошик'}
-                    </button>
-                </div>`;
-            }).join('');
-
-            grid.querySelectorAll('.add-btn').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const id = Number(this.dataset.id);
-                    addToCart(id);
-                    renderGrid();
-                });
-            });
-        }
-
-        function addToCart(id) {
-            state.cart[id] = (state.cart[id] || 0) + 1;
-            const p = PRODUCTS.find(item => item.id === id);
-            if (p) showToast(`Додано: ${p.name}`);
-            renderCartCount();
-            renderCartBody();
-        }
-
-        function changeQty(id, delta) {
-            if (!state.cart[id]) return;
-            state.cart[id] += delta;
-            if (state.cart[id] <= 0) delete state.cart[id];
-            renderCartCount();
-            renderCartBody();
-            renderGrid();
-        }
-
-        function removeFromCart(id) {
-            delete state.cart[id];
-            renderCartCount();
-            renderCartBody();
-            renderGrid();
-        }
-
-        function renderCartCount() {
-            const el = document.getElementById('cartCount');
-            if (el) el.textContent = getCartCount();
-        }
-
-        function renderCartBody() {
-            const body = document.getElementById('cartBody');
-            const subtotalEl = document.getElementById('cartSubtotal');
-            const checkoutBtn = document.getElementById('checkoutBtn');
-            if (!body) return;
-
-            const items = getCartItems();
-
-            if (items.length === 0) {
-                body.innerHTML = `<div class="cart-empty">Кошик порожній</div>`;
-                if (subtotalEl) subtotalEl.textContent = '0 ₴';
-                if (checkoutBtn) checkoutBtn.disabled = true;
-                return;
-            }
-
-            body.innerHTML = items.map(({ product, qty }) => `
-                <div class="cart-item" data-id="${product.id}">
-                    <div class="thumb-sm" style="background:${catMap[product.cat] ? catMap[product.cat].color : '#eee'}">
-                        <img src="${product.img}"
-                             alt="${product.name}"
-                             onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22%3E%3Crect fill=%22%23e8e8e8%22 width=%2260%22 height=%2260%22/%3E%3C/svg%3E';">
-                    </div>
-                    <div class="info">
-                        <div class="name">${product.name}</div>
-                        <div class="qty-row">
-                            <button class="qty-minus" data-id="${product.id}" type="button">−</button>
-                            <span class="qty">${qty}</span>
-                            <button class="qty-plus" data-id="${product.id}" type="button">+</button>
-                            <span class="line-price">${fmt(product.price * qty)} ₴</span>
-                            <button class="remove-btn" data-id="${product.id}" type="button">Видалити</button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-
-            if (subtotalEl) subtotalEl.textContent = `${fmt(getCartTotal())} ₴`;
-            if (checkoutBtn) checkoutBtn.disabled = false;
-
-            body.querySelectorAll('.qty-minus').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    changeQty(Number(this.dataset.id), -1);
-                });
-            });
-            body.querySelectorAll('.qty-plus').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    changeQty(Number(this.dataset.id), 1);
-                });
-            });
-            body.querySelectorAll('.remove-btn').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    removeFromCart(Number(this.dataset.id));
-                });
-            });
-        }
-
-        function openCartDrawer() {
-            document.getElementById('drawer').classList.add('open');
-            document.getElementById('overlay').classList.add('open');
-        }
-
-        function closeCartDrawer() {
-            document.getElementById('drawer').classList.remove('open');
-            document.getElementById('overlay').classList.remove('open');
-        }
-
-        function renderDeliverySummary() {
-            const itemsWrap = document.getElementById('deliveryItems');
-            const totalEl = document.getElementById('deliveryTotalPrice');
-            if (!itemsWrap) return;
-
-            const items = getCartItems();
-
-            itemsWrap.innerHTML = items.map(({ product, qty }) => `
-                <div class="item-row">
-                    <span>${product.name} × ${qty}</span>
-                    <span>${fmt(product.price * qty)} ₴</span>
-                </div>
-            `).join('');
-
-            if (totalEl) totalEl.textContent = `${fmt(getCartTotal())} ₴`;
-        }
-
-        function openDeliveryModal() {
-            if (getCartCount() === 0) {
-                showToast('Кошик порожній');
-                return;
-            }
-            renderDeliverySummary();
-            document.getElementById('deliveryOverlay').classList.add('open');
-            closeCartDrawer();
-        }
-
-        function closeDeliveryModal() {
-            document.getElementById('deliveryOverlay').classList.remove('open');
-        }
-
-        function handleDeliverySubmit(e) {
-            e.preventDefault();
-
-            const city = document.getElementById('citySelect').value;
-            const street = document.getElementById('streetAddress').value.trim();
-            const postal = document.getElementById('postalCode').value.trim();
-
-            if (!city || !street || !/^\d{5}$/.test(postal)) {
-                showToast('Перевірте поля доставки');
-                return;
-            }
-
-            state.cart = {};
-            renderCartCount();
-            renderCartBody();
-            renderGrid();
-            closeDeliveryModal();
-            document.getElementById('deliveryForm').reset();
-            showToast('Замовлення оформлено! Дякуємо 🎉');
-        }
-
-        function initFilterControls() {
-            const priceMax = document.getElementById('priceMax');
-            const priceMaxVal = document.getElementById('priceMaxVal');
-            if (priceMax) {
-                priceMax.addEventListener('input', function () {
-                    state.priceMax = Number(this.value);
-                    if (priceMaxVal) priceMaxVal.textContent = fmt(state.priceMax);
-                    renderGrid();
-                });
-            }
-
-            const onlySale = document.getElementById('onlySale');
-            if (onlySale) {
-                onlySale.addEventListener('change', function () {
-                    state.onlySale = this.checked;
-                    renderGrid();
-                });
-            }
-
-            const sort = document.getElementById('sort');
-            if (sort) {
-                sort.addEventListener('change', function () {
-                    state.sort = this.value;
-                    renderGrid();
-                });
-            }
-
-            const resetBtn = document.getElementById('resetFilters');
-            if (resetBtn) {
-                resetBtn.addEventListener('click', function () {
-                    state.activeCat = 'all';
-                    state.checkedCats.clear();
-                    state.priceMax = 60000;
-                    state.onlySale = false;
-                    state.sort = 'default';
-                    state.search = '';
-
-                    document.getElementById('searchInput').value = '';
-                    document.getElementById('priceMax').value = 60000;
-                    document.getElementById('priceMaxVal').textContent = '60000';
-                    document.getElementById('onlySale').checked = false;
-                    document.getElementById('sort').value = 'default';
-
-                    renderFilterChecks();
-                    renderCatTabs();
-                    renderGrid();
-                });
-            }
-
-            const filtersToggle = document.getElementById('filtersToggle');
-            const filtersPanel = document.getElementById('filtersPanel');
-            if (filtersToggle && filtersPanel) {
-                filtersToggle.addEventListener('click', function () {
-                    const isOpen = filtersPanel.classList.toggle('open');
-                    this.classList.toggle('open', isOpen);
-                    this.setAttribute('aria-expanded', String(isOpen));
-                });
-            }
-        }
-
-        function initSearch() {
-            const form = document.getElementById('searchForm');
-            const input = document.getElementById('searchInput');
-            if (!form || !input) return;
-
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                state.search = input.value;
-                renderGrid();
-            });
-
-            input.addEventListener('input', function () {
-                state.search = this.value;
-                renderGrid();
-            });
-        }
-
-        function initCartAndDelivery() {
-            document.getElementById('openCart').addEventListener('click', openCartDrawer);
-            document.getElementById('closeCart').addEventListener('click', closeCartDrawer);
-            document.getElementById('overlay').addEventListener('click', closeCartDrawer);
-
-            document.getElementById('checkoutBtn').addEventListener('click', openDeliveryModal);
-            document.getElementById('deliveryClose').addEventListener('click', closeDeliveryModal);
-            document.getElementById('deliveryOverlay').addEventListener('click', function (e) {
-                if (e.target === this) closeDeliveryModal();
-            });
-            document.getElementById('deliveryForm').addEventListener('submit', handleDeliverySubmit);
-        }
-
-        function init() {
-            renderBoard();
-            renderCatTabs();
+<script>
+const CATEGORIES = [
+    { id: 'electronics', name: 'Електроніка', color: '#DCEDEA' },
+    { id: 'appliances', name: 'Побутова техніка', color: '#F3E7D6' },
+    { id: 'fashion', name: 'Мода', color: '#F6DED6' },
+    { id: 'home', name: 'Дім і сад', color: '#E4EFDA' },
+    { id: 'kids', name: 'Дитячі товари', color: '#F7E4EE' },
+    { id: 'sport', name: 'Спорт і відпочинок', color: '#DEE9F5' }
+];
+
+
+const PRODUCTS = [
+    // Електроніка
+    { id: 1, cat: 'electronics', name: 'Samsung Galaxy S24 Ultra 512GB', price: 52999, old: 56999, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLFqFHscpNyTHyVSJlja4_69R2z6bY3l-a7zRXWNtAxw&s=10' },
+    { id: 2, cat: 'electronics', name: 'iPhone 15 Pro Max 256GB', price: 49999, old: 52999, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4FfW3pdxoVfw9f1Npjm-267GVZNOXHkHsE-gFLss20w&s=10' },
+    { id: 3, cat: 'electronics', name: 'MacBook Air 15" M3', price: 45999, old: null, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAds_biZ0Syh5J_fRw6lXd7uElwhCFWAakG3k0u-ua4A&s=10' },
+    { id: 4, cat: 'electronics', name: 'Samsung Galaxy Buds 3 Pro', price: 7999, old: 9999, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStBnLOgMtKpRi4iYuhggwE9tleoZsVsbVJFBuJUjCrqQ&s' },
+
+    // Побутова техніка
+    { id: 5, cat: 'appliances', name: 'Робот-пилосос Xiaomi S10', price: 12999, old: 15999, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGAU014xYQG8Wc4PYPJbrGlCLoCAwxqiDTwl6YS5ZeMw&s=10' },
+    { id: 6, cat: 'appliances', name: 'Холодильник LG InstaView', price: 32999, old: null, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3bbX08E7GkWbzKkMg1nLntfs8_HuL7b4ZBKurt5j0MQ&s' },
+    { id: 7, cat: 'appliances', name: 'Мультиварка Philips HD', price: 4999, old: null, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXdPhxHtL525MYFVRjXSn4CjoTaG590jlYwjWmbc3Yzg&s=10' },
+    { id: 8, cat: 'appliances', name: 'Праска Tefal Ultimate', price: 2999, old: 3999, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGdM6oW2Bu8XsexEEa5twKs6i34bnLlPRb-3xWx10zRQ&s=10' },
+
+    // Мода
+    { id: 9, cat: 'fashion', name: 'Куртка North Face Nuptse', price: 12999, old: 15999, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCx3rwWFItjXcsZhscEsOo8HDwPhyrtNG_Id2dVOQq-Q&s=10' },
+    { id: 10, cat: 'fashion', name: 'Кросівки Nike Air Max 90', price: 5999, old: null, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT35wakYijvGZVyqKKt1G2qZo7u7UKxi56BQIPyqITDyg&s=10' },
+    { id: 11, cat: 'fashion', name: 'Сумка Michael Kors', price: 8999, old: 11999, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9YoesRzr-Dsj7lWI9BwnQfMZpqueDUgW0ebftVpi7UQ&s=10' },
+    { id: 12, cat: 'fashion', name: 'Пальто Zara Premium', price: 4999, old: null, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_xmyYtz1NiMjacka9kEGpED9d_gl2aCd9xq7drwOLGw&s=10' },
+
+    // Дім і сад
+    { id: 13, cat: 'home', name: 'Диван IKEA Vimle 3-місний', price: 15999, old: 18999, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMMC9tD2VhNRyzlTkWeTApL0fdN6ZumCud7jE1b9R_dA&s=10' },
+    { id: 14, cat: 'home', name: 'Набір посуду Tefal 12 пр.', price: 3499, old: null, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIn3g0UADRp1XVWxcg0Hzkx7plVOuEE7XxpeQCj0EmPQ&s=10' },
+    { id: 15, cat: 'home', name: 'Світильник IKEA FADO', price: 799, old: null, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_LRofQzUKsv-SOQ9e4co7JaYv9xiwnp3fONxK8h6hbg&s' },
+    { id: 16, cat: 'home', name: 'Штучна ялина Balsam Hill', price: 2499, old: 3499, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlUWXNpbevo_SRoUp2Kgg4KmQ5AQo3feupz3x6eg-zYw&s=10' },
+
+    // Дитячі товари
+    { id: 17, cat: 'kids', name: 'Конструктор BrickCity (500 дет.)', price: 999, old: null, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScOAccLrR3nfAO3SrzrfAkzIw14oeLzcGGjFZIIuzXRg&s' },
+    { id: 18, cat: 'kids', name: 'Дитячий велосипед KidRide 16"', price: 3299, old: 3799, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5sEWxrLLMpRa3uc9GRDlrFdhg2VzqVJk3RgxQMJiAFA&s=10' },
+    { id: 19, cat: 'kids', name: "М'яка іграшка Ведмедик Тедді", price: 449, old: null, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5fkAQ2gM07TomNvWDoYjixeCtQI775nica7cBtGjT3Q&s=10' },
+    { id: 20, cat: 'kids', name: 'Пазл «Мандрівка світом» 1000 дет.', price: 349, old: null, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3dDWrBFUx8KXbND8U2U5w6D4C7lUFYs90W3IQykwl2w&s=10' },
+
+    // Спорт
+    { id: 21, cat: 'sport', name: 'Гантелі набірні PowerSet 20 кг', price: 1799, old: null, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Js1qZw4Z93-lGk6Xusa99qD1Cp5cmYO8i-6fHQPA1w&s=10' },
+    { id: 22, cat: 'sport', name: 'Килимок для йоги FlexMat', price: 599, old: null, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgoawq5ZZMWDZjieR9u5i107wpSl200Sb-sA0iI0LJ5A&s' },
+    { id: 23, cat: 'sport', name: "Футбольний м'яч ProKick", price: 749, old: 899, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQngPWF7PNYXzXFQDlBkRvI9D-hAVfJHRoMp6ubW-Q7rg&s' },
+    { id: 24, cat: 'sport', name: 'Спортивний рюкзак TrainBag', price: 899, old: null, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRip3IilH8803rw_3i79lFsGi3JXA1INuw-E6GP5stPcw&s=10' }
+];
+
+const catMap = Object.fromEntries(CATEGORIES.map(c => [c.id, c]));
+
+let state = {
+    activeCat: 'all',
+    checkedCats: new Set(),
+    search: '',
+    priceMax: 60000,
+    onlySale: false,
+    sort: 'default',
+    cart: {}
+};
+
+function fmt(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window.toastTimer);
+    window.toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function getCartCount() {
+    return Object.values(state.cart).reduce((sum, qty) => sum + qty, 0);
+}
+
+function getCartItems() {
+    return Object.entries(state.cart)
+        .map(([id, qty]) => {
+            const product = PRODUCTS.find(p => p.id === Number(id));
+            return product ? { product, qty } : null;
+        })
+        .filter(Boolean);
+}
+
+function getCartTotal() {
+    return getCartItems().reduce((sum, { product, qty }) => sum + product.price * qty, 0);
+}
+
+function renderCatTabs() {
+    const wrap = document.getElementById('catTabs');
+    if (!wrap) return;
+
+    const all = [{ id: 'all', name: 'Усі товари' }, ...CATEGORIES];
+    wrap.innerHTML = all.map(c => `
+        <button class="cat-tab ${state.activeCat === c.id ? 'active' : ''}" data-cat="${c.id}" type="button">
+            ${c.name}
+        </button>
+    `).join('');
+
+    wrap.querySelectorAll('.cat-tab').forEach(btn => {
+        btn.addEventListener('click', function () {
+            state.activeCat = this.dataset.cat;
+            state.checkedCats.clear();
             renderFilterChecks();
+            renderCatTabs();
             renderGrid();
-            renderCartCount();
-            renderCartBody();
-            initFilterControls();
-            initSearch();
-            initCartAndDelivery();
-        }
+        });
+    });
+}
 
-        document.addEventListener('DOMContentLoaded', init);
-    </script>
+function renderFilterChecks() {
+    const wrap = document.getElementById('catChecks');
+    if (!wrap) return;
+
+    wrap.innerHTML = CATEGORIES.map(c => `
+        <label class="check-row">
+            <input type="checkbox" value="${c.id}" ${state.checkedCats.has(c.id) ? 'checked' : ''}>
+            ${c.name}
+        </label>
+    `).join('');
+
+    wrap.querySelectorAll('input').forEach(inp => {
+        inp.addEventListener('change', function () {
+            if (this.checked) {
+                state.checkedCats.add(this.value);
+                state.activeCat = 'all';
+            } else {
+                state.checkedCats.delete(this.value);
+            }
+            renderCatTabs();
+            renderGrid();
+        });
+    });
+}
+
+function renderBoard() {
+    const board = document.getElementById('board');
+    if (!board) return;
+
+    const deals = PRODUCTS.filter(p => p.old !== null).slice(0, 3);
+
+    if (deals.length === 0) {
+        board.innerHTML = `<div class="board-head"><h1>Спеціальні пропозиції</h1></div>`;
+        return;
+    }
+
+    board.innerHTML = `
+        <div class="board-head">
+            <div class="eyebrow">// сьогоднішні знижки</div>
+            <h1>Торгуємось чесно</h1>
+            <p>Три позиції з найбільшою вигодою на сьогодні</p>
+        </div>
+        ${deals.map(d => {
+            const off = Math.round(100 - (d.price / d.old * 100));
+            return `
+            <div class="deal-card">
+                <span class="badge">-${off}%</span>
+                <img src="${d.img}" alt="${d.name}" width="60" height="60" style="border-radius:10px;object-fit:cover;" onerror="this.src='https://placehold.co/60x60/e8e8e8/999?text=Фото'">
+                <span class="name">${d.name}</span>
+                <div class="prices">
+                    <span class="now">${fmt(d.price)} ₴</span>
+                    <span class="old">${fmt(d.old)} ₴</span>
+                </div>
+            </div>`;
+        }).join('')}
+    `;
+}
+
+function getFiltered() {
+    let list = PRODUCTS.slice();
+
+    if (state.checkedCats.size > 0) {
+        list = list.filter(p => state.checkedCats.has(p.cat));
+    } else if (state.activeCat !== 'all') {
+        list = list.filter(p => p.cat === state.activeCat);
+    }
+
+    if (state.search.trim()) {
+        const q = state.search.trim().toLowerCase();
+        list = list.filter(p => p.name.toLowerCase().includes(q));
+    }
+
+    list = list.filter(p => p.price <= state.priceMax);
+
+    if (state.onlySale) {
+        list = list.filter(p => p.old !== null);
+    }
+
+    switch (state.sort) {
+        case 'price-asc':
+            list.sort((a, b) => a.price - b.price);
+            break;
+        case 'price-desc':
+            list.sort((a, b) => b.price - a.price);
+            break;
+        case 'name':
+            list.sort((a, b) => a.name.localeCompare(b.name, 'uk'));
+            break;
+    }
+
+    return list;
+}
+
+function renderGrid() {
+    const grid = document.getElementById('grid');
+    if (!grid) return;
+
+    const list = getFiltered();
+    const resultCount = document.getElementById('resultCount');
+    if (resultCount) resultCount.textContent = `(${list.length})`;
+
+    if (list.length === 0) {
+        grid.innerHTML = `<div class="empty-state">Нічого не знайдено</div>`;
+        return;
+    }
+
+    grid.innerHTML = list.map(p => {
+        const c = catMap[p.cat];
+        const inCart = state.cart[p.id] || 0;
+
+        return `
+        <div class="card">
+            <div class="thumb" style="background:${c ? c.color : '#eee'}">
+                ${p.old !== null ? `<span class="sale-flag">Знижка</span>` : ''}
+                <img src="${p.img}"
+                     alt="${p.name}"
+                     loading="lazy"
+                     onerror="this.onerror=null; this.src='https://placehold.co/400x400/e8e8e8/999?text=Немає+фото';">
+            </div>
+            <div class="cat-label">${c ? c.name : ''}</div>
+            <div class="name">${p.name}</div>
+            <div class="tag-row">
+                <div class="price-tag">
+                    <span class="now">${fmt(p.price)} ₴</span>
+                    ${p.old !== null ? `<span class="old">${fmt(p.old)} ₴</span>` : ''}
+                </div>
+            </div>
+            <button class="add-btn ${inCart > 0 ? 'added' : ''}" data-id="${p.id}" type="button">
+                ${inCart > 0 ? `У кошику (${inCart})` : 'Додати в кошик'}
+            </button>
+        </div>`;
+    }).join('');
+
+    grid.querySelectorAll('.add-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const id = Number(this.dataset.id);
+            addToCart(id);
+            renderGrid();
+        });
+    });
+}
+
+function addToCart(id) {
+    state.cart[id] = (state.cart[id] || 0) + 1;
+    const p = PRODUCTS.find(item => item.id === id);
+    if (p) showToast(`Додано: ${p.name}`);
+    renderCartCount();
+    renderCartBody();
+}
+
+function changeQty(id, delta) {
+    if (!state.cart[id]) return;
+    state.cart[id] += delta;
+    if (state.cart[id] <= 0) delete state.cart[id];
+    renderCartCount();
+    renderCartBody();
+    renderGrid();
+}
+
+function removeFromCart(id) {
+    delete state.cart[id];
+    renderCartCount();
+    renderCartBody();
+    renderGrid();
+}
+
+function renderCartCount() {
+    const el = document.getElementById('cartCount');
+    if (el) el.textContent = getCartCount();
+}
+
+function renderCartBody() {
+    const body = document.getElementById('cartBody');
+    const subtotalEl = document.getElementById('cartSubtotal');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    if (!body) return;
+
+    const items = getCartItems();
+
+    if (items.length === 0) {
+        body.innerHTML = `<div class="cart-empty">Кошик порожній</div>`;
+        if (subtotalEl) subtotalEl.textContent = '0 ₴';
+        if (checkoutBtn) checkoutBtn.disabled = true;
+        return;
+    }
+
+    body.innerHTML = items.map(({ product, qty }) => `
+        <div class="cart-item" data-id="${product.id}">
+            <div class="thumb-sm" style="background:${catMap[product.cat] ? catMap[product.cat].color : '#eee'}">
+                <img src="${product.img}"
+                     alt="${product.name}"
+                     onerror="this.onerror=null; this.src='https://placehold.co/60x60/e8e8e8/999?text=Фото';">
+            </div>
+            <div class="info">
+                <div class="name">${product.name}</div>
+                <div class="qty-row">
+                    <button class="qty-minus" data-id="${product.id}" type="button">−</button>
+                    <span class="qty">${qty}</span>
+                    <button class="qty-plus" data-id="${product.id}" type="button">+</button>
+                    <span class="line-price">${fmt(product.price * qty)} ₴</span>
+                    <button class="remove-btn" data-id="${product.id}" type="button">Видалити</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+
+    if (subtotalEl) subtotalEl.textContent = `${fmt(getCartTotal())} ₴`;
+    if (checkoutBtn) checkoutBtn.disabled = false;
+
+    body.querySelectorAll('.qty-minus').forEach(btn => {
+        btn.addEventListener('click', function () {
+            changeQty(Number(this.dataset.id), -1);
+        });
+    });
+    body.querySelectorAll('.qty-plus').forEach(btn => {
+        btn.addEventListener('click', function () {
+            changeQty(Number(this.dataset.id), 1);
+        });
+    });
+    body.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            removeFromCart(Number(this.dataset.id));
+        });
+    });
+}
+
+function openCartDrawer() {
+    document.getElementById('drawer').classList.add('open');
+    document.getElementById('overlay').classList.add('open');
+}
+
+function closeCartDrawer() {
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+}
+
+function renderDeliverySummary() {
+    const itemsWrap = document.getElementById('deliveryItems');
+    const totalEl = document.getElementById('deliveryTotalPrice');
+    if (!itemsWrap) return;
+
+    const items = getCartItems();
+
+    itemsWrap.innerHTML = items.map(({ product, qty }) => `
+        <div class="item-row">
+            <span>${product.name} × ${qty}</span>
+            <span>${fmt(product.price * qty)} ₴</span>
+        </div>
+    `).join('');
+
+    if (totalEl) totalEl.textContent = `${fmt(getCartTotal())} ₴`;
+}
+
+function openDeliveryModal() {
+    if (getCartCount() === 0) {
+        showToast('Кошик порожній');
+        return;
+    }
+    renderDeliverySummary();
+    document.getElementById('deliveryOverlay').classList.add('open');
+    closeCartDrawer();
+}
+
+function closeDeliveryModal() {
+    document.getElementById('deliveryOverlay').classList.remove('open');
+}
+
+function handleDeliverySubmit(e) {
+    e.preventDefault();
+
+    const city = document.getElementById('citySelect').value;
+    const street = document.getElementById('streetAddress').value.trim();
+    const postal = document.getElementById('postalCode').value.trim();
+
+    if (!city || !street || !/^\d{5}$/.test(postal)) {
+        showToast('Перевірте поля доставки');
+        return;
+    }
+
+    state.cart = {};
+    renderCartCount();
+    renderCartBody();
+    renderGrid();
+    closeDeliveryModal();
+    document.getElementById('deliveryForm').reset();
+    showToast('Замовлення оформлено! Дякуємо 🎉');
+}
+
+function initFilterControls() {
+    const priceMax = document.getElementById('priceMax');
+    const priceMaxVal = document.getElementById('priceMaxVal');
+    if (priceMax) {
+        priceMax.addEventListener('input', function () {
+            state.priceMax = Number(this.value);
+            if (priceMaxVal) priceMaxVal.textContent = fmt(state.priceMax);
+            renderGrid();
+        });
+    }
+
+    const onlySale = document.getElementById('onlySale');
+    if (onlySale) {
+        onlySale.addEventListener('change', function () {
+            state.onlySale = this.checked;
+            renderGrid();
+        });
+    }
+
+    const sort = document.getElementById('sort');
+    if (sort) {
+        sort.addEventListener('change', function () {
+            state.sort = this.value;
+            renderGrid();
+        });
+    }
+
+    const resetBtn = document.getElementById('resetFilters');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function () {
+            state.activeCat = 'all';
+            state.checkedCats.clear();
+            state.priceMax = 60000;
+            state.onlySale = false;
+            state.sort = 'default';
+            state.search = '';
+
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) searchInput.value = '';
+            if (priceMax) priceMax.value = 60000;
+            if (priceMaxVal) priceMaxVal.textContent = '60 000';
+            if (onlySale) onlySale.checked = false;
+            if (sort) sort.value = 'default';
+
+            renderFilterChecks();
+            renderCatTabs();
+            renderGrid();
+        });
+    }
+
+    const filtersToggle = document.getElementById('filtersToggle');
+    const filtersPanel = document.getElementById('filtersPanel');
+    if (filtersToggle && filtersPanel) {
+        filtersToggle.addEventListener('click', function () {
+            const isOpen = filtersPanel.classList.toggle('open');
+            this.classList.toggle('open', isOpen);
+            this.setAttribute('aria-expanded', String(isOpen));
+        });
+    }
+}
+
+function initSearch() {
+    const form = document.getElementById('searchForm');
+    const input = document.getElementById('searchInput');
+    if (!form || !input) return;
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        state.search = input.value;
+        renderGrid();
+    });
+
+    input.addEventListener('input', function () {
+        state.search = this.value;
+        renderGrid();
+    });
+}
+
+function initCartAndDelivery() {
+    const openCart = document.getElementById('openCart');
+    const closeCart = document.getElementById('closeCart');
+    const overlay = document.getElementById('overlay');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    const deliveryClose = document.getElementById('deliveryClose');
+    const deliveryOverlay = document.getElementById('deliveryOverlay');
+    const deliveryForm = document.getElementById('deliveryForm');
+
+    if (openCart) openCart.addEventListener('click', openCartDrawer);
+    if (closeCart) closeCart.addEventListener('click', closeCartDrawer);
+    if (overlay) overlay.addEventListener('click', closeCartDrawer);
+    if (checkoutBtn) checkoutBtn.addEventListener('click', openDeliveryModal);
+    if (deliveryClose) deliveryClose.addEventListener('click', closeDeliveryModal);
+    if (deliveryOverlay) {
+        deliveryOverlay.addEventListener('click', function (e) {
+            if (e.target === this) closeDeliveryModal();
+        });
+    }
+    if (deliveryForm) deliveryForm.addEventListener('submit', handleDeliverySubmit);
+}
+
+function init() {
+    renderBoard();
+    renderCatTabs();
+    renderFilterChecks();
+    renderGrid();
+    renderCartCount();
+    renderCartBody();
+    initFilterControls();
+    initSearch();
+    initCartAndDelivery();
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
 </body>
 </html>

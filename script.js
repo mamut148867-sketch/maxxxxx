@@ -15,33 +15,33 @@ const PRODUCTS = [
     { id: 4, cat: 'electronics', name: 'Samsung Galaxy Buds 3 Pro', price: 7999, old: 9999, img: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=400&fit=crop' },
 
     // Побутова техніка
-    { id: 5, cat: 'appliances', name: 'Робот-пилосос Xiaomi S10', price: 12999, old: 15999, img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop' },
+    { id: 5, cat: 'appliances', name: 'Робот-пилосос Xiaomi S10', price: 12999, old: 15999, img: 'https://images.unsplash.com/photo-1558317374-067fb5f30001?w=400&h=400&fit=crop' },
     { id: 6, cat: 'appliances', name: 'Холодильник LG InstaView', price: 32999, old: null, img: 'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=400&h=400&fit=crop' },
-    { id: 7, cat: 'appliances', name: 'Мультиварка Philips HD', price: 4999, old: null, img: 'https://images.unsplash.com/photo-1585515320310-259814833e71?w=400&h=400&fit=crop' },
-    { id: 8, cat: 'appliances', name: 'Праска Tefal Ultimate', price: 2999, old: 3999, img: 'https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=400&h=400&fit=crop' },
+    { id: 7, cat: 'appliances', name: 'Мультиварка Philips HD', price: 4999, old: null, img: 'https://images.unsplash.com/photo-1585515320310-259814148e62?w=400&h=400&fit=crop' },
+    { id: 8, cat: 'appliances', name: 'Праска Tefal Ultimate', price: 2999, old: 3999, img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=400&fit=crop' },
 
     // Мода
-    { id: 9, cat: 'fashion', name: 'Куртка North Face Nuptse', price: 12999, old: 15999, img: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=400&h=400&fit=crop' },
+    { id: 9, cat: 'fashion', name: 'Куртка North Face Nuptse', price: 12999, old: 15999, img: 'https://images.unsplash.com/photo-1544923246-77307dd654cb?w=400&h=400&fit=crop' },
     { id: 10, cat: 'fashion', name: 'Кросівки Nike Air Max 90', price: 5999, old: null, img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop' },
     { id: 11, cat: 'fashion', name: 'Сумка Michael Kors', price: 8999, old: 11999, img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop' },
-    { id: 12, cat: 'fashion', name: 'Пальто Zara Premium', price: 4999, old: null, img: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&h=400&fit=crop' },
+    { id: 12, cat: 'fashion', name: 'Пальто Zara Premium', price: 4999, old: null, img: 'https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=400&h=400&fit=crop' },
 
     // Дім і сад
     { id: 13, cat: 'home', name: 'Диван IKEA Vimle 3-місний', price: 15999, old: 18999, img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=400&fit=crop' },
-    { id: 14, cat: 'home', name: 'Набір посуду Tefal 12 пр.', price: 3499, old: null, img: 'https://images.unsplash.com/photo-1584990347449-39b4aaad7a0b?w=400&h=400&fit=crop' },
+    { id: 14, cat: 'home', name: 'Набір посуду Tefal 12 пр.', price: 3499, old: null, img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop' },
     { id: 15, cat: 'home', name: 'Світильник IKEA FADO', price: 799, old: null, img: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&h=400&fit=crop' },
-    { id: 16, cat: 'home', name: 'Штучна ялина Balsam Hill', price: 2499, old: 3499, img: 'https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=400&h=400&fit=crop' },
+    { id: 16, cat: 'home', name: 'Штучна ялина Balsam Hill', price: 2499, old: 3499, img: 'https://images.unsplash.com/photo-1543248939-ff40856f65d4?w=400&h=400&fit=crop' },
 
     // Дитячі товари
     { id: 17, cat: 'kids', name: 'Конструктор BrickCity (500 дет.)', price: 999, old: null, img: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400&h=400&fit=crop' },
-    { id: 18, cat: 'kids', name: 'Дитячий велосипед KidRide 16"', price: 3299, old: 3799, img: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=400&h=400&fit=crop' },
-    { id: 19, cat: 'kids', name: 'М\'яка іграшка Ведмедик Тедді', price: 449, old: null, img: 'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=400&h=400&fit=crop' },
-    { id: 20, cat: 'kids', name: 'Пазл «Мандрівка світом» 1000 дет.', price: 349, old: null, img: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=400&h=400&fit=crop' },
+    { id: 18, cat: 'kids', name: 'Дитячий велосипед KidRide 16"', price: 3299, old: 3799, img: 'https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?w=400&h=400&fit=crop' },
+    { id: 19, cat: 'kids', name: "М'яка іграшка Ведмедик Тедді", price: 449, old: null, img: 'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=400&h=400&fit=crop' },
+    { id: 20, cat: 'kids', name: 'Пазл «Мандрівка світом» 1000 дет.', price: 349, old: null, img: 'https://images.unsplash.com/photo-1618842676088-c4d48a6a7c9a?w=400&h=400&fit=crop' },
 
     // Спорт
-    { id: 21, cat: 'sport', name: 'Гантелі набірні PowerSet 20 кг', price: 1799, old: null, img: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&h=400&fit=crop' },
-    { id: 22, cat: 'sport', name: 'Килимок для йоги FlexMat', price: 599, old: null, img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=400&fit=crop' },
-    { id: 23, cat: 'sport', name: 'Футбольний м\'яч ProKick', price: 749, old: 899, img: 'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=400&h=400&fit=crop' },
+    { id: 21, cat: 'sport', name: 'Гантелі набірні PowerSet 20 кг', price: 1799, old: null, img: 'https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?w=400&h=400&fit=crop' },
+    { id: 22, cat: 'sport', name: 'Килимок для йоги FlexMat', price: 599, old: null, img: 'https://images.unsplash.com/photo-1592432678016-e910b452f9a2?w=400&h=400&fit=crop' },
+    { id: 23, cat: 'sport', name: "Футбольний м'яч ProKick", price: 749, old: 899, img: 'https://images.unsplash.com/photo-1614632537190-23e4146777db?w=400&h=400&fit=crop' },
     { id: 24, cat: 'sport', name: 'Спортивний рюкзак TrainBag', price: 899, old: null, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop' }
 ];
 
@@ -54,7 +54,7 @@ let state = {
     priceMax: 60000,
     onlySale: false,
     sort: 'default',
-    cart: {} // { productId: qty }
+    cart: {}
 };
 
 /* ===================== HELPERS ===================== */
@@ -162,7 +162,7 @@ function renderBoard() {
             return `
             <div class="deal-card">
                 <span class="badge">-${off}%</span>
-                <img src="${d.img}" alt="${d.name}" width="60" height="60" style="border-radius:10px;object-fit:cover;">
+                <img src="${d.img}" alt="${d.name}" width="60" height="60" style="border-radius:10px;object-fit:cover;" onerror="this.src='https://placehold.co/60x60/e8e8e8/999?text=Фото'">
                 <span class="name">${d.name}</span>
                 <div class="prices">
                     <span class="now">${fmt(d.price)} ₴</span>
@@ -234,7 +234,7 @@ function renderGrid() {
                 <img src="${p.img}"
                      alt="${p.name}"
                      loading="lazy"
-                     onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Crect fill=%22%23e8e8e8%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23999%22 font-family=%22sans-serif%22 font-size=%2218%22%3EНемає фото%3C/text%3E%3C/svg%3E';">
+                     onerror="this.onerror=null; this.src='https://placehold.co/400x400/e8e8e8/999?text=Немає+фото';">
             </div>
             <div class="cat-label">${c ? c.name : ''}</div>
             <div class="name">${p.name}</div>
@@ -310,7 +310,7 @@ function renderCartBody() {
             <div class="thumb-sm" style="background:${catMap[product.cat] ? catMap[product.cat].color : '#eee'}">
                 <img src="${product.img}"
                      alt="${product.name}"
-                     onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22%3E%3Crect fill=%22%23e8e8e8%22 width=%2260%22 height=%2260%22/%3E%3C/svg%3E';">
+                     onerror="this.onerror=null; this.src='https://placehold.co/60x60/e8e8e8/999?text=Фото';">
             </div>
             <div class="info">
                 <div class="name">${product.name}</div>
@@ -400,7 +400,6 @@ function handleDeliverySubmit(e) {
         return;
     }
 
-    // "Place" the order
     state.cart = {};
     renderCartCount();
     renderCartBody();
@@ -449,11 +448,12 @@ function initFilterControls() {
             state.sort = 'default';
             state.search = '';
 
-            document.getElementById('searchInput').value = '';
-            document.getElementById('priceMax').value = 60000;
-            document.getElementById('priceMaxVal').textContent = '60000';
-            document.getElementById('onlySale').checked = false;
-            document.getElementById('sort').value = 'default';
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) searchInput.value = '';
+            if (priceMax) priceMax.value = 60000;
+            if (priceMaxVal) priceMaxVal.textContent = '60 000';
+            if (onlySale) onlySale.checked = false;
+            if (sort) sort.value = 'default';
 
             renderFilterChecks();
             renderCatTabs();
@@ -494,16 +494,25 @@ function initSearch() {
 /* ===================== CART DRAWER / DELIVERY WIRING ===================== */
 
 function initCartAndDelivery() {
-    document.getElementById('openCart').addEventListener('click', openCartDrawer);
-    document.getElementById('closeCart').addEventListener('click', closeCartDrawer);
-    document.getElementById('overlay').addEventListener('click', closeCartDrawer);
+    const openCart = document.getElementById('openCart');
+    const closeCart = document.getElementById('closeCart');
+    const overlay = document.getElementById('overlay');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    const deliveryClose = document.getElementById('deliveryClose');
+    const deliveryOverlay = document.getElementById('deliveryOverlay');
+    const deliveryForm = document.getElementById('deliveryForm');
 
-    document.getElementById('checkoutBtn').addEventListener('click', openDeliveryModal);
-    document.getElementById('deliveryClose').addEventListener('click', closeDeliveryModal);
-    document.getElementById('deliveryOverlay').addEventListener('click', function (e) {
-        if (e.target === this) closeDeliveryModal();
-    });
-    document.getElementById('deliveryForm').addEventListener('submit', handleDeliverySubmit);
+    if (openCart) openCart.addEventListener('click', openCartDrawer);
+    if (closeCart) closeCart.addEventListener('click', closeCartDrawer);
+    if (overlay) overlay.addEventListener('click', closeCartDrawer);
+    if (checkoutBtn) checkoutBtn.addEventListener('click', openDeliveryModal);
+    if (deliveryClose) deliveryClose.addEventListener('click', closeDeliveryModal);
+    if (deliveryOverlay) {
+        deliveryOverlay.addEventListener('click', function (e) {
+            if (e.target === this) closeDeliveryModal();
+        });
+    }
+    if (deliveryForm) deliveryForm.addEventListener('submit', handleDeliverySubmit);
 }
 
 /* ===================== INIT ===================== */
